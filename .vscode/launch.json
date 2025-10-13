@@ -11,7 +11,7 @@
             "mode": "auto",
             "program": "${workspaceFolder}/cmd/oob_gpu_exporter",
             "cwd": "${workspaceFolder}/internal",
-            "args": ["-config", "../default-config.yml"]
+            "args": ["-config", "../config.yml","-debug"]
         }
     ]
 }

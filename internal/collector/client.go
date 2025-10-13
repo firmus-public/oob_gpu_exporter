@@ -2,6 +2,7 @@ package collector
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 
 	"github.com/firmus-public/oob_gpu_exporter/internal/config"
@@ -21,10 +22,13 @@ const (
 )
 
 type Client struct {
-	redfish    *Redfish
-	vendor     int
-	systemPath string
-	procPath   string
+	redfish     *Redfish
+	vendor      int
+	systemPath  string
+	procPath    string
+	chassisPath string
+	devicesPath string
+	thermalPath string
 }
 
 type GPUInfo struct {
@@ -60,10 +64,24 @@ func (client *Client) findAllEndpoints() bool {
 	var root V1Response
 	var group GroupResponse
 	var system SystemResponse
+	var chassis ChassisResponse
 	var ok bool
 
 	// Root
 	ok = client.redfish.Get(redfishRootPath, &root)
+	if !ok {
+		return false
+	}
+
+	// Chassis
+	ok = client.redfish.Get(root.Chassis.OdataId, &group)
+	if !ok {
+		return false
+	}
+
+	client.chassisPath = group.Members[0].OdataId
+
+	ok = client.redfish.Get(client.chassisPath, &chassis)
 	if !ok {
 		return false
 	}
@@ -82,6 +100,8 @@ func (client *Client) findAllEndpoints() bool {
 	}
 
 	client.procPath = system.Processors.OdataId
+	client.devicesPath = chassis.PCIeDevices.OdataId
+	client.thermalPath = chassis.Thermal.OdataId
 
 	// Vendor
 	m := strings.ToLower(system.Manufacturer)
@@ -107,6 +127,16 @@ func (client *Client) findAllEndpoints() bool {
 }
 
 func (client *Client) RefreshGPUs(mc *Collector, ch chan<- prometheus.Metric) bool {
+	if client.vendor == DELL {
+		return client.refreshDellGPUs(mc, ch)
+	} else if client.vendor == SUPERMICRO {
+		return client.refreshSupermicroGPUs(mc, ch)
+	} else {
+		return false
+	}
+}
+
+func (client *Client) refreshDellGPUs(mc *Collector, ch chan<- prometheus.Metric) bool {
 	group := GroupResponse{}
 	ok := client.redfish.Get(client.procPath, &group)
 	if !ok {
@@ -117,24 +147,22 @@ func (client *Client) RefreshGPUs(mc *Collector, ch chan<- prometheus.Metric) bo
 
 	dellVideo := DellVideo{}
 
-	if client.vendor == DELL {
-		// Get dell video inventory
+	// Get dell video inventory
 
-		dellVideoPath := fmt.Sprintf("%s/Oem/Dell/DellVideo", client.systemPath)
-		client.redfish.Get(dellVideoPath, &dellVideo)
-		dellGPUSensorPath := fmt.Sprintf("%s/Oem/Dell/DellGPUSensors", client.systemPath)
+	dellVideoPath := fmt.Sprintf("%s/Oem/Dell/DellVideo", client.systemPath)
+	client.redfish.Get(dellVideoPath, &dellVideo)
+	dellGPUSensorPath := fmt.Sprintf("%s/Oem/Dell/DellGPUSensors", client.systemPath)
 
-		// Get dell GPU sensor metrics
+	// Get dell GPU sensor metrics
 
-		dellGPUSensors := DellGPUSensors{}
-		if ok := client.redfish.Get(dellGPUSensorPath, &dellGPUSensors); ok {
-			for _, v := range dellGPUSensors.Members {
-				mc.NewBoardPowerSupplyStatus(ch, &v)
-				mc.NewMemoryTemperatureCelsius(ch, &v)
-				mc.NewPowerBrakeStatus(ch, &v)
-				mc.NewPrimaryGPUTemperatureCelsius(ch, &v)
-				mc.NewThermalAlertStatus(ch, &v)
-			}
+	dellGPUSensors := DellGPUSensors{}
+	if ok := client.redfish.Get(dellGPUSensorPath, &dellGPUSensors); ok {
+		for _, v := range dellGPUSensors.Members {
+			mc.NewBoardPowerSupplyStatus(ch, &v)
+			mc.NewMemoryTemperatureCelsius(ch, &v)
+			mc.NewPowerBrakeStatus(ch, &v)
+			mc.NewPrimaryGPUTemperatureCelsius(ch, &v)
+			mc.NewThermalAlertStatus(ch, &v)
 		}
 	}
 
@@ -161,15 +189,13 @@ func (client *Client) RefreshGPUs(mc *Collector, ch chan<- prometheus.Metric) bo
 		gpuInfo.Model = resp.Model
 		gpuInfo.PartNumber = resp.PartNumber
 
-		if client.vendor == DELL {
-			for _, v := range dellVideo.Members {
-				if v.Id == resp.Id {
-					gpuInfo.UUID = v.GPUGUID
-					gpuInfo.SerialNumber = v.SerialNumber
-					mc.NewGPUState(ch, &v)
-					mc.NewGPUHealth(ch, &v)
-					break
-				}
+		for _, v := range dellVideo.Members {
+			if v.Id == resp.Id {
+				gpuInfo.UUID = v.GPUGUID
+				gpuInfo.SerialNumber = v.SerialNumber
+				mc.NewDellGPUState(ch, &v)
+				mc.NewDellGPUHealth(ch, &v)
+				break
 			}
 		}
 
@@ -221,6 +247,54 @@ func (client *Client) RefreshGPUs(mc *Collector, ch chan<- prometheus.Metric) bo
 			mc.NewGPUMemoryBandwidthPercent(ch, resp.Id, &gpuMemoryMetrics)
 			mc.NewGPUMemoryOperatingSpeedMHz(ch, resp.Id, &gpuMemoryMetrics)
 		}
+	}
+
+	return true
+}
+
+func (client *Client) refreshSupermicroGPUs(mc *Collector, ch chan<- prometheus.Metric) bool {
+	group := GroupResponse{}
+	ok := client.redfish.Get(client.devicesPath, &group)
+	if !ok {
+		return false
+	}
+
+	// Get GPU metrics
+
+	thermalResp := ThermalResponse{}
+	client.redfish.Get(client.thermalPath, &thermalResp)
+
+	for _, c := range group.Members.GetLinks() {
+		if !strings.Contains(c, "GPU") {
+			continue
+		}
+
+		resp := PCIeDeviceResponse{}
+
+		ok = client.redfish.Get(c, &resp)
+		if !ok {
+			continue
+		}
+
+		gpuInfo := GPUInfo{}
+		gpuInfo.Id = strconv.Itoa(resp.Oem.Supermicro.GPUSlot)
+		gpuInfo.Manufacturer = resp.Oem.Supermicro.GPUVendor
+		gpuInfo.Model = resp.Model
+		gpuInfo.PartNumber = resp.PartNumber
+		gpuInfo.UUID = resp.Oem.Supermicro.GPUGUID
+		gpuInfo.SerialNumber = resp.SerialNumber
+
+		mc.NewGPUInfo(ch, &gpuInfo)
+		mc.NewSupermicroGPUHealth(ch, &resp)
+		mc.NewSupermicroGPUState(ch, &resp)
+
+		for _, t := range thermalResp.Temperatures {
+			if t.Name == fmt.Sprintf("GPU%d Temp", resp.Oem.Supermicro.GPUSlot) {
+				mc.NewSupermicroGPUTemperatureCelsius(ch, resp.Oem.Supermicro.GPUSlot, &t)
+				break
+			}
+		}
+
 	}
 
 	return true
