@@ -1,0 +1,17 @@
+address: 0.0.0.0
+
+port: 9347
+
+timeout: 10
+
+metrics_prefix: oob
+
+tls:
+  enabled: false
+  cert_file: ""
+  key_file: ""
+
+hosts:
+  default:
+    username: dummy
+    password: dummy

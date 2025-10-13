@@ -1,0 +1,60 @@
+# This is a sample configuration file for the OOB GPU exporter,
+# including default values and equivalent environment variables.
+# The environment variables take precedence over the values in
+# the configuration file.
+
+# Listen address
+# Default value: 0.0.0.0
+# Environment variable CONFIG_ADDRESS=0.0.0.0
+address: 0.0.0.0
+
+# Listen port
+# Default value: 9348
+# Environment variable CONFIG_PORT=9348
+port: 9347
+
+# HTTP timeout in seconds for Redfish API calls
+# Default value: 10
+# Environment variable CONFIG_TIMEOUT=10
+timeout: 10
+
+# Prefix for the exported metrics
+# Default value: oob
+# Environment variable CONFIG_METRICS_PREFIX=oob
+metrics_prefix: oob
+
+# Enable the use of an https proxy for all requests
+# Environment variable: HTTPS_PROXY=http://localhost:8888
+# https_proxy: http://localhost:8888
+
+# The TLS section is used to enable HTTPS for the exporter. To enable TLS you
+# need a PEM encoded certificate and private key. The public certificate must
+# include the entire chain of trust.
+# TLS can also be configured using the corresponding environment variables.
+tls:
+  enabled: false  # CONFIG_TLS_ENABLED=false
+  cert_file: ""   # CONFIG_TLS_CERT_FILE=
+  key_file: ""    # CONFIG_TLS_KEY_FILE=
+
+# The hosts section is used to define login information for the different targets.
+# Hosts can be referenced either via their IP address or their hostname, as long
+# as it matches the "target" parameter when scraping the metrics. Optionally you
+# can also specify a scheme (http or https) for accessing the Redfish API, which
+# automatically defaults to https.
+#
+# When the "target" does not match any host, the exporter will attempt to use the
+# login information under "default".
+#
+# The default username and password can be configured using the two environment
+# variables CONFIG_DEFAULT_USERNAME and CONFIG_DEFAULT_PASSWORD
+hosts:
+  default:
+    username: user
+    password: pass
+  192.168.1.1:
+    username: user
+    password: pass
+    scheme: http
+  host01.example.com:
+    username: user
+    password: pass
