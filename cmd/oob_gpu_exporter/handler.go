@@ -8,9 +8,9 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/smc-public/oob_gpu_exporter/internal/collector"
-	"github.com/smc-public/oob_gpu_exporter/internal/log"
-	"github.com/smc-public/oob_gpu_exporter/internal/version"
+	"github.com/firmus-public/oob_gpu_exporter/internal/collector"
+	"github.com/firmus-public/oob_gpu_exporter/internal/log"
+	"github.com/firmus-public/oob_gpu_exporter/internal/version"
 )
 
 const (

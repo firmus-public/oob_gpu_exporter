@@ -8,10 +8,10 @@ import (
 	"sync"
 	"sync/atomic"
 
+	"github.com/firmus-public/oob_gpu_exporter/internal/config"
+	"github.com/firmus-public/oob_gpu_exporter/internal/version"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/common/expfmt"
-	"github.com/smc-public/oob_gpu_exporter/internal/config"
-	"github.com/smc-public/oob_gpu_exporter/internal/version"
 )
 
 var mu sync.Mutex

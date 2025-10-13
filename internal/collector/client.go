@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/smc-public/oob_gpu_exporter/internal/config"
+	"github.com/firmus-public/oob_gpu_exporter/internal/config"
 	"github.com/prometheus/client_golang/prometheus"
 )
 
@@ -21,19 +21,19 @@ const (
 )
 
 type Client struct {
-	redfish     *Redfish
-	vendor      int
-	systemPath  string
-	procPath    string
+	redfish    *Redfish
+	vendor     int
+	systemPath string
+	procPath   string
 }
 
 type GPUInfo struct {
-	Id                    string
-	Manufacturer          string
-	Model                 string
-	PartNumber            string
-	SerialNumber          string
-	UUID                 string
+	Id           string
+	Manufacturer string
+	Model        string
+	PartNumber   string
+	SerialNumber string
+	UUID         string
 }
 
 func NewClient(h *config.HostConfig) *Client {
@@ -85,7 +85,7 @@ func (client *Client) findAllEndpoints() bool {
 
 	// Vendor
 	m := strings.ToLower(system.Manufacturer)
-	if strings.Contains(m, "dell") || strings.Contains(m, "sustainable"){
+	if strings.Contains(m, "dell") || strings.Contains(m, "sustainable") {
 		client.vendor = DELL
 	} else if strings.Contains(m, "hpe") {
 		client.vendor = HPE

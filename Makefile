@@ -1,7 +1,7 @@
 VERSION  = $(or $(shell git tag --points-at HEAD | grep -oP 'v\K[0-9.]+'), unknown)
 REVISION = $(shell git rev-parse HEAD)
 
-REPOSITORY := github.com/smc-public/oob_gpu_exporter
+REPOSITORY := github.com/firmus-public/oob_gpu_exporter
 LDFLAGS    := -X $(REPOSITORY)/internal/version.Version=$(VERSION)
 LDFLAGS    += -X $(REPOSITORY)/internal/version.Revision=$(REVISION)
 GOFLAGS    := -ldflags "$(LDFLAGS)"

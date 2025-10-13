@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/smc-public/oob_gpu_exporter/internal/log"
+	"github.com/firmus-public/oob_gpu_exporter/internal/log"
 	"gopkg.in/yaml.v3"
 )
 

@@ -12,8 +12,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/smc-public/oob_gpu_exporter/internal/config"
-	"github.com/smc-public/oob_gpu_exporter/internal/log"
+	"github.com/firmus-public/oob_gpu_exporter/internal/config"
+	"github.com/firmus-public/oob_gpu_exporter/internal/log"
 )
 
 type Redfish struct {
@@ -227,7 +227,7 @@ func (r *Redfish) Get(path string, res any) bool {
 	log.Debug("Querying %q", url)
 	resp, err := r.http.Do(req)
 	if resp != nil {
-		defer func(){
+		defer func() {
 			err = resp.Body.Close()
 			if err != nil {
 				log.Error("Error closing response body for %q: %v", url, err)
