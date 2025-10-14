@@ -1,0 +1,47 @@
+{
+  "@odata.type": "#PCIeDevice.v1_5_0.PCIeDevice",
+  "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/GPU10",
+  "Id": "GPU10",
+  "Name": "GPU10",
+  "Description": "GPU Device 10",
+  "Model": "NVIDIA L40S",
+  "SerialNumber": "1324323036464",
+  "PartNumber": "900-2G133-0080-000",
+  "FirmwareVersion": "95.02.66.00.02",
+  "DeviceType": "MultiFunction",
+  "Status": {
+    "State": "Enabled",
+    "Health": "OK",
+    "HealthRollup": "OK"
+  },
+  "PCIeInterface": {
+    "PCIeType": "Gen4",
+    "MaxPCIeType": "Gen5",
+    "LanesInUse": 16,
+    "MaxLanes": 16
+  },
+  "PCIeFunctions": {
+    "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/GPU10/PCIeFunctions"
+  },
+  "Links": {
+    "Chassis": [
+      {
+        "@odata.id": "/redfish/v1/Chassis/1"
+      }
+    ]
+  },
+  "Oem": {
+    "Supermicro": {
+      "@odata.type": "#SmcGPUExtensions.v1_0_0.GPU",
+      "GPUSlot": 10,
+      "BoardPartNumber": "900-2G133-0080-000",
+      "Driver": "Loaded",
+      "MemoryVendor": "S",
+      "MemoryPartNumber": "161-0496-600",
+      "GPUGuid": "1223e5f8e08934a259d567ddbbf1a9e8",
+      "InfoROMVersion": "G133.0242.00.03",
+      "GPUVendor": "NVIDIA"
+    }
+  },
+  "@odata.etag": "\"48688c427abe3a3474d95fd813ee7bb3\""
+}

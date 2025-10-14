@@ -32,7 +32,7 @@ go.work.sum
 # .vscode/
 
 # binary
-oob_gpu_exporter*
+/oob_gpu_exporter*
 
 # test config
-config.yml
+/config.yml

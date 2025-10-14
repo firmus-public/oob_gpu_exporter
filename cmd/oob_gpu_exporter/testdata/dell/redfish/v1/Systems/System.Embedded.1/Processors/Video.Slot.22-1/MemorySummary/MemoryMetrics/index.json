@@ -1,0 +1,10 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#MemoryMetrics.MemoryMetrics",
+    "@odata.id": "/redfish/v1/Systems/System.Embedded.1/Processors/Video.Slot.22-1/MemorySummary/MemoryMetrics",
+    "@odata.type": "#MemoryMetrics.v1_7_3.MemoryMetrics",
+    "Name": "MemoryMetrics",
+    "Id": "MemoryMetrics",
+    "Description": "Represents MemoryMetrics of the GPU",
+    "BandwidthPercent": 0,
+    "OperatingSpeedMHz": 3199
+}
