@@ -127,11 +127,12 @@ func (client *Client) findAllEndpoints() bool {
 }
 
 func (client *Client) RefreshGPUs(mc *Collector, ch chan<- prometheus.Metric) bool {
-	if client.vendor == DELL {
+	switch client.vendor {
+	case DELL:
 		return client.refreshDellGPUs(mc, ch)
-	} else if client.vendor == SUPERMICRO {
+	case SUPERMICRO:
 		return client.refreshSupermicroGPUs(mc, ch)
-	} else {
+	default:
 		return false
 	}
 }
