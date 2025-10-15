@@ -332,8 +332,8 @@ type PCIeDeviceResponse struct {
 		MaxLanes    int    `json:"MaxLanes"`
 	} `json:"PCIeInterface"`
 	PCIeFunctions Odata `json:"PCIeFunctions"`
-	Oem struct {
-		Supermicro struct {
+	Oem *struct {
+		Supermicro *struct {
 			OdataType        string `json:"@odata.type"`
 			GPUSlot          int    `json:"GPUSlot"`
 			BoardPartNumber  string `json:"BoardPartNumber"`

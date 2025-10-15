@@ -1,7 +1,6 @@
 package collector
 
 import (
-	"strconv"
 	"strings"
 
 	"github.com/prometheus/client_golang/prometheus"
@@ -116,7 +115,7 @@ func (mc *Collector) NewSupermicroGPUHealth(ch chan<- prometheus.Metric, m *PCIe
 		mc.GPUHealth,
 		prometheus.GaugeValue,
 		float64(value),
-		strconv.Itoa(m.Oem.Supermicro.GPUSlot),
+		m.ID,
 		m.Status.Health,
 	)
 }
@@ -127,17 +126,17 @@ func (mc *Collector) NewSupermicroGPUState(ch chan<- prometheus.Metric, m *PCIeD
 		mc.GPUState,
 		prometheus.GaugeValue,
 		float64(value),
-		strconv.Itoa(m.Oem.Supermicro.GPUSlot),
+		m.ID,
 		m.Status.State,
 	)
 }
 
-func (mc *Collector) NewSupermicroGPUTemperatureCelsius(ch chan<- prometheus.Metric, slot int, m *Temperature) {
+func (mc *Collector) NewSupermicroGPUTemperatureCelsius(ch chan<- prometheus.Metric, id string, m *Temperature) {
 	ch <- prometheus.MustNewConstMetric(
 		mc.GPUPrimaryGPUTemperatureCelsius,
 		prometheus.GaugeValue,
 		m.ReadingCelsius,
-		strconv.Itoa(slot),
+		id,
 	)
 }
 

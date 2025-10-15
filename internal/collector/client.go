@@ -2,7 +2,6 @@ package collector
 
 import (
 	"fmt"
-	"strconv"
 	"strings"
 
 	"github.com/firmus-public/oob_gpu_exporter/internal/config"
@@ -278,20 +277,23 @@ func (client *Client) refreshSupermicroGPUs(mc *Collector, ch chan<- prometheus.
 		}
 
 		gpuInfo := GPUInfo{}
-		gpuInfo.Id = strconv.Itoa(resp.Oem.Supermicro.GPUSlot)
-		gpuInfo.Manufacturer = resp.Oem.Supermicro.GPUVendor
+		gpuInfo.Id = resp.ID
 		gpuInfo.Model = resp.Model
 		gpuInfo.PartNumber = resp.PartNumber
-		gpuInfo.UUID = resp.Oem.Supermicro.GPUGUID
 		gpuInfo.SerialNumber = resp.SerialNumber
+
+		if resp.Oem != nil && resp.Oem.Supermicro != nil {
+			gpuInfo.Manufacturer = resp.Oem.Supermicro.GPUVendor
+			gpuInfo.UUID = resp.Oem.Supermicro.GPUGUID
+		}
 
 		mc.NewGPUInfo(ch, &gpuInfo)
 		mc.NewSupermicroGPUHealth(ch, &resp)
 		mc.NewSupermicroGPUState(ch, &resp)
 
 		for _, t := range thermalResp.Temperatures {
-			if t.Name == fmt.Sprintf("GPU%d Temp", resp.Oem.Supermicro.GPUSlot) {
-				mc.NewSupermicroGPUTemperatureCelsius(ch, resp.Oem.Supermicro.GPUSlot, &t)
+			if t.Name == fmt.Sprintf("%s Temp", resp.ID) {
+				mc.NewSupermicroGPUTemperatureCelsius(ch, resp.ID, &t)
 				break
 			}
 		}
