@@ -76,14 +76,14 @@ oob_gpu_hmma_utilization_percent{id="Video.Slot.27-1"} 0
 oob_gpu_hmma_utilization_percent{id="Video.Slot.28-1"} 0
 # HELP oob_gpu_info Information about the GPU
 # TYPE oob_gpu_info untyped
-oob_gpu_info{id="Video.Slot.21-1",manufacturer="NVIDIA Corporation",model="NVIDIA H200",part_number="692-2G520-0280-001",serial_number="1653824200703",uuid="7bc0e864ac5e6f1f3f4e468d8cb72eae"} 1
-oob_gpu_info{id="Video.Slot.22-1",manufacturer="NVIDIA Corporation",model="NVIDIA H200",part_number="692-2G520-0280-001",serial_number="1653824201064",uuid="a051042a43a5aa78a22020e9a90ecf2d"} 1
-oob_gpu_info{id="Video.Slot.23-1",manufacturer="NVIDIA Corporation",model="NVIDIA H200",part_number="692-2G520-0280-001",serial_number="1653924100941",uuid="3009ad60562382115da6cfc182177431"} 1
-oob_gpu_info{id="Video.Slot.24-1",manufacturer="NVIDIA Corporation",model="NVIDIA H200",part_number="692-2G520-0280-001",serial_number="1653824201307",uuid="e47146aa2aa6e02b7c31f9ad550ce084"} 1
-oob_gpu_info{id="Video.Slot.25-1",manufacturer="NVIDIA Corporation",model="NVIDIA H200",part_number="692-2G520-0280-001",serial_number="1653924052967",uuid="347accfba9424008181b7d9c53523a78"} 1
-oob_gpu_info{id="Video.Slot.26-1",manufacturer="NVIDIA Corporation",model="NVIDIA H200",part_number="692-2G520-0280-001",serial_number="1653824201536",uuid="32b85d9d4df56ec25a71d4db2899d6a2"} 1
-oob_gpu_info{id="Video.Slot.27-1",manufacturer="NVIDIA Corporation",model="NVIDIA H200",part_number="692-2G520-0280-001",serial_number="1653824200527",uuid="0d77eb8e940575e1cdb2915b31964481"} 1
-oob_gpu_info{id="Video.Slot.28-1",manufacturer="NVIDIA Corporation",model="NVIDIA H200",part_number="692-2G520-0280-001",serial_number="1653824201434",uuid="6108731b5ec3d248596ef5927e9dab51"} 1
+oob_gpu_info{guid="0d77eb8e940575e1cdb2915b31964481",id="Video.Slot.27-1",manufacturer="NVIDIA Corporation",model="NVIDIA H200",part_number="692-2G520-0280-001",serial_number="1653824200527",slot="0"} 1
+oob_gpu_info{guid="3009ad60562382115da6cfc182177431",id="Video.Slot.23-1",manufacturer="NVIDIA Corporation",model="NVIDIA H200",part_number="692-2G520-0280-001",serial_number="1653924100941",slot="0"} 1
+oob_gpu_info{guid="32b85d9d4df56ec25a71d4db2899d6a2",id="Video.Slot.26-1",manufacturer="NVIDIA Corporation",model="NVIDIA H200",part_number="692-2G520-0280-001",serial_number="1653824201536",slot="0"} 1
+oob_gpu_info{guid="347accfba9424008181b7d9c53523a78",id="Video.Slot.25-1",manufacturer="NVIDIA Corporation",model="NVIDIA H200",part_number="692-2G520-0280-001",serial_number="1653924052967",slot="0"} 1
+oob_gpu_info{guid="6108731b5ec3d248596ef5927e9dab51",id="Video.Slot.28-1",manufacturer="NVIDIA Corporation",model="NVIDIA H200",part_number="692-2G520-0280-001",serial_number="1653824201434",slot="0"} 1
+oob_gpu_info{guid="7bc0e864ac5e6f1f3f4e468d8cb72eae",id="Video.Slot.21-1",manufacturer="NVIDIA Corporation",model="NVIDIA H200",part_number="692-2G520-0280-001",serial_number="1653824200703",slot="0"} 1
+oob_gpu_info{guid="a051042a43a5aa78a22020e9a90ecf2d",id="Video.Slot.22-1",manufacturer="NVIDIA Corporation",model="NVIDIA H200",part_number="692-2G520-0280-001",serial_number="1653824201064",slot="0"} 1
+oob_gpu_info{guid="e47146aa2aa6e02b7c31f9ad550ce084",id="Video.Slot.24-1",manufacturer="NVIDIA Corporation",model="NVIDIA H200",part_number="692-2G520-0280-001",serial_number="1653824201307",slot="0"} 1
 # HELP oob_gpu_max_supported_pcie_link_speed Maximum supported PCIe link speed of the GPU
 # TYPE oob_gpu_max_supported_pcie_link_speed gauge
 oob_gpu_max_supported_pcie_link_speed{id="Video.Slot.21-1"} 5

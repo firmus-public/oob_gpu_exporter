@@ -30,8 +30,8 @@ func TestDell(t *testing.T) {
     assert_equal(t, "dell_expected.txt", resp)
 }
 
-func TestSupermicro(t *testing.T) {
-	server := NewTestServer(t, "supermicro")
+func TestSYS421GETNRT(t *testing.T) {
+	server := NewTestServer(t, "SYS-421GE-TNRT")
 	defer server.Close()
 
     exporter := NewOOBGPUExporter(t, "testdata/config.yml")
@@ -39,7 +39,19 @@ func TestSupermicro(t *testing.T) {
 
     resp := getMetrics(t, server)
 
-    assert_equal(t, "supermicro_expected.txt", resp)
+    assert_equal(t, "SYS-421GE-TNRT_expected.txt", resp)
+}
+
+func TestAS4124GONARTPlus(t *testing.T) {
+	server := NewTestServer(t, "AS -4124GO-NART+")
+	defer server.Close()
+
+    exporter := NewOOBGPUExporter(t, "testdata/config.yml")
+	defer exporter.Stop()
+
+    resp := getMetrics(t, server)
+
+    assert_equal(t, "AS -4124GO-NART+_expected.txt", resp)
 }
 
 // TestServer is a simple HTTPS server that serves files from a specified directory.

@@ -2,6 +2,8 @@ package collector
 
 import (
 	"fmt"
+	"regexp"
+	"strconv"
 	"strings"
 
 	"github.com/firmus-public/oob_gpu_exporter/internal/config"
@@ -36,7 +38,8 @@ type GPUInfo struct {
 	Model        string
 	PartNumber   string
 	SerialNumber string
-	UUID         string
+	GPUGUID      string
+	Slot         int
 }
 
 func NewClient(h *config.HostConfig) *Client {
@@ -191,7 +194,7 @@ func (client *Client) refreshDellGPUs(mc *Collector, ch chan<- prometheus.Metric
 
 		for _, v := range dellVideo.Members {
 			if v.Id == resp.Id {
-				gpuInfo.UUID = v.GPUGUID
+				gpuInfo.GPUGUID = v.GPUGUID
 				gpuInfo.SerialNumber = v.SerialNumber
 				mc.NewDellGPUState(ch, &v)
 				mc.NewDellGPUHealth(ch, &v)
@@ -252,6 +255,9 @@ func (client *Client) refreshDellGPUs(mc *Collector, ch chan<- prometheus.Metric
 	return true
 }
 
+var GPU_REGEXP = regexp.MustCompile(`GPU (.*) Temp`)
+var HBM_REGEXP = regexp.MustCompile(`HBM (.*) Temp`)
+
 func (client *Client) refreshSupermicroGPUs(mc *Collector, ch chan<- prometheus.Metric) bool {
 	group := GroupResponse{}
 	ok := client.redfish.Get(client.devicesPath, &group)
@@ -260,9 +266,6 @@ func (client *Client) refreshSupermicroGPUs(mc *Collector, ch chan<- prometheus.
 	}
 
 	// Get GPU metrics
-
-	thermalResp := ThermalResponse{}
-	client.redfish.Get(client.thermalPath, &thermalResp)
 
 	for _, c := range group.Members.GetLinks() {
 		if !strings.Contains(c, "GPU") {
@@ -284,20 +287,60 @@ func (client *Client) refreshSupermicroGPUs(mc *Collector, ch chan<- prometheus.
 
 		if resp.Oem != nil && resp.Oem.Supermicro != nil {
 			gpuInfo.Manufacturer = resp.Oem.Supermicro.GPUVendor
-			gpuInfo.UUID = resp.Oem.Supermicro.GPUGUID
+			if resp.Oem.Supermicro.GPUGUID1 != "" {
+				gpuInfo.GPUGUID = resp.Oem.Supermicro.GPUGUID1
+			} else {
+				gpuInfo.GPUGUID = resp.Oem.Supermicro.GPUGUID2
+			}
+			gpuInfo.Slot = resp.Oem.Supermicro.GPUSlot
 		}
 
 		mc.NewGPUInfo(ch, &gpuInfo)
 		mc.NewSupermicroGPUHealth(ch, &resp)
 		mc.NewSupermicroGPUState(ch, &resp)
+	}
 
+	thermalResp := ThermalResponse{}
+	ok = client.redfish.Get(client.thermalPath, &thermalResp)
+
+	if ok {
 		for _, t := range thermalResp.Temperatures {
-			if t.Name == fmt.Sprintf("%s Temp", resp.ID) {
-				mc.NewSupermicroGPUTemperatureCelsius(ch, resp.ID, &t)
-				break
+			if t.Name == "GPU Temp" && t.Oem != nil && t.Oem.Supermicro != nil {
+				for name, value := range t.Oem.Supermicro.Details {
+					matches := GPU_REGEXP.FindStringSubmatch(name)
+					if matches != nil {
+						temp, err := strconv.ParseFloat(value, 64)
+						if err == nil {
+							id := "GPU" + matches[1]
+							mc.NewSmcGPUTemp(ch, id, temp)
+						}
+					}
+				}
+				continue
+			}
+
+			if t.Name == "HBM Temp" && t.Oem != nil && t.Oem.Supermicro != nil {
+				for name, value := range t.Oem.Supermicro.Details {
+					matches := HBM_REGEXP.FindStringSubmatch(name)
+					if matches != nil {
+						temp, err := strconv.ParseFloat(value, 64)
+						if err == nil {
+							id := "GPU" + matches[1]
+							mc.NewSmcGPUMemoryTemp(ch, id, temp)
+						}
+					}
+				}
+				continue
+			}
+
+			re := regexp.MustCompile(`(GPU\d+) Temp`)
+			matches := re.FindStringSubmatch(t.Name)
+			if matches != nil {
+				id := matches[1]
+				mc.NewSmcGPUTemp(ch, id, t.ReadingCelsius)
+				continue
 			}
 		}
-
 	}
 
 	return true

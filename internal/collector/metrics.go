@@ -1,6 +1,7 @@
 package collector
 
 import (
+	"strconv"
 	"strings"
 
 	"github.com/prometheus/client_golang/prometheus"
@@ -83,7 +84,8 @@ func (mc *Collector) NewGPUInfo(ch chan<- prometheus.Metric, m *GPUInfo) {
 		strings.TrimSpace(m.Model),
 		strings.TrimSpace(m.PartNumber),
 		strings.TrimSpace(m.SerialNumber),
-		strings.TrimSpace(m.UUID),
+		strings.TrimSpace(m.GPUGUID),
+		strconv.Itoa(m.Slot),
 	)
 }
 
@@ -131,11 +133,20 @@ func (mc *Collector) NewSupermicroGPUState(ch chan<- prometheus.Metric, m *PCIeD
 	)
 }
 
-func (mc *Collector) NewSupermicroGPUTemperatureCelsius(ch chan<- prometheus.Metric, id string, m *Temperature) {
+func (mc *Collector) NewSmcGPUTemp(ch chan<- prometheus.Metric, id string, value float64) {
 	ch <- prometheus.MustNewConstMetric(
 		mc.GPUPrimaryGPUTemperatureCelsius,
 		prometheus.GaugeValue,
-		m.ReadingCelsius,
+		value,
+		id,
+	)
+}
+
+func (mc *Collector) NewSmcGPUMemoryTemp(ch chan<- prometheus.Metric, id string, value float64) {
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUMemoryTemperatureCelsius,
+		prometheus.GaugeValue,
+		value,
 		id,
 	)
 }

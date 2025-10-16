@@ -1,6 +1,8 @@
 package collector
 
-import "strconv"
+import (
+	"strconv"
+)
 
 const (
 	StateEnabled = "Enabled"
@@ -340,7 +342,8 @@ type PCIeDeviceResponse struct {
 			Driver           string `json:"Driver"`
 			MemoryVendor     string `json:"MemoryVendor"`
 			MemoryPartNumber string `json:"MemoryPartNumber"`
-			GPUGUID          string `json:"GPUGuid"`
+			GPUGUID1          string `json:"GPUGuid"`
+			GPUGUID2		  string `json:"GPU GUID"`
 			InfoROMVersion   string `json:"InfoROMVersion"`
 			GPUVendor        string `json:"GPUVendor"`
 		} `json:"Supermicro"`
@@ -422,6 +425,12 @@ type Temperature struct {
 	UpperThresholdNonCritical float64 `json:"UpperThresholdNonCritical"`
 	Status                    Status  `json:"Status"`
 	RelatedItem               []Odata `json:"RelatedItem"`
+	Oem *struct {
+		Supermicro *struct {
+			OdataType string `json:"@odata.type"`
+			Details   map[string]string `json:"Details"`
+		} `json:"Supermicro"`
+	} `json:"Oem"`
 }
 
 func (t *Temperature) GetId(fallback int) string {

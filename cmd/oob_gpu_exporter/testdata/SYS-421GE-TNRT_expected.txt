@@ -15,13 +15,13 @@ oob_gpu_health{id="GPU3",status="OK"} 2
 oob_gpu_health{id="GPU4",status="OK"} 2
 # HELP oob_gpu_info Information about the GPU
 # TYPE oob_gpu_info untyped
-oob_gpu_info{id="GPU1",manufacturer="NVIDIA",model="NVIDIA L40S",part_number="900-2G133-0080-000",serial_number="1324323038758",uuid="fb726bf1e2dde9dba047c41eee764d78"} 1
-oob_gpu_info{id="GPU10",manufacturer="NVIDIA",model="NVIDIA L40S",part_number="900-2G133-0080-000",serial_number="1324323036464",uuid="1223e5f8e08934a259d567ddbbf1a9e8"} 1
-oob_gpu_info{id="GPU11",manufacturer="NVIDIA",model="NVIDIA L40S",part_number="900-2G133-0080-000",serial_number="1324323025586",uuid="c0be574954f8e0304f939b2ad8207adc"} 1
-oob_gpu_info{id="GPU12",manufacturer="NVIDIA",model="NVIDIA L40S",part_number="900-2G133-0080-000",serial_number="1324123033769",uuid="5271185fda625998d6e97d8988edcc7d"} 1
-oob_gpu_info{id="GPU2",manufacturer="NVIDIA",model="NVIDIA L40S",part_number="900-2G133-0080-000",serial_number="1324123031306",uuid="126de3424186af7a7278fbc959640202"} 1
-oob_gpu_info{id="GPU3",manufacturer="NVIDIA",model="NVIDIA L40S",part_number="900-2G133-0080-000",serial_number="1324323040425",uuid="f0f7a31977d1fd9721916afcb3c54376"} 1
-oob_gpu_info{id="GPU4",manufacturer="NVIDIA",model="NVIDIA L40S",part_number="900-2G133-0080-000",serial_number="1324123016695",uuid="4bfb9dd89e9e7e86a0039d047ee4c989"} 1
+oob_gpu_info{guid="1223e5f8e08934a259d567ddbbf1a9e8",id="GPU10",manufacturer="NVIDIA",model="NVIDIA L40S",part_number="900-2G133-0080-000",serial_number="1324323036464",slot="10"} 1
+oob_gpu_info{guid="126de3424186af7a7278fbc959640202",id="GPU2",manufacturer="NVIDIA",model="NVIDIA L40S",part_number="900-2G133-0080-000",serial_number="1324123031306",slot="2"} 1
+oob_gpu_info{guid="4bfb9dd89e9e7e86a0039d047ee4c989",id="GPU4",manufacturer="NVIDIA",model="NVIDIA L40S",part_number="900-2G133-0080-000",serial_number="1324123016695",slot="4"} 1
+oob_gpu_info{guid="5271185fda625998d6e97d8988edcc7d",id="GPU12",manufacturer="NVIDIA",model="NVIDIA L40S",part_number="900-2G133-0080-000",serial_number="1324123033769",slot="12"} 1
+oob_gpu_info{guid="c0be574954f8e0304f939b2ad8207adc",id="GPU11",manufacturer="NVIDIA",model="NVIDIA L40S",part_number="900-2G133-0080-000",serial_number="1324323025586",slot="11"} 1
+oob_gpu_info{guid="f0f7a31977d1fd9721916afcb3c54376",id="GPU3",manufacturer="NVIDIA",model="NVIDIA L40S",part_number="900-2G133-0080-000",serial_number="1324323040425",slot="3"} 1
+oob_gpu_info{guid="fb726bf1e2dde9dba047c41eee764d78",id="GPU1",manufacturer="NVIDIA",model="NVIDIA L40S",part_number="900-2G133-0080-000",serial_number="1324323038758",slot="1"} 1
 # HELP oob_gpu_primary_gpu_temperature_celsius Primary temperature of the GPU in celsius
 # TYPE oob_gpu_primary_gpu_temperature_celsius gauge
 oob_gpu_primary_gpu_temperature_celsius{id="GPU1"} 41
@@ -31,6 +31,7 @@ oob_gpu_primary_gpu_temperature_celsius{id="GPU12"} 40
 oob_gpu_primary_gpu_temperature_celsius{id="GPU2"} 40
 oob_gpu_primary_gpu_temperature_celsius{id="GPU3"} 43
 oob_gpu_primary_gpu_temperature_celsius{id="GPU4"} 42
+oob_gpu_primary_gpu_temperature_celsius{id="GPU9"} 41
 # HELP oob_gpu_state State of the GPU
 # TYPE oob_gpu_state gauge
 oob_gpu_state{id="GPU1",state="Enabled"} 0

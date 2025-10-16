@@ -79,7 +79,7 @@ func NewCollector() *Collector {
 		GPUInfo: prometheus.NewDesc(
 			prometheus.BuildFQName(prefix, "gpu", "info"),
 			"Information about the GPU",
-			[]string{"id", "manufacturer", "model", "part_number", "serial_number", "uuid"}, nil,
+			[]string{"id", "manufacturer", "model", "part_number", "serial_number", "guid", "slot"}, nil,
 		),
 		GPUState: prometheus.NewDesc(
 			prometheus.BuildFQName(prefix, "gpu", "state"),
