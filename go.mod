@@ -1,4 +1,4 @@
-module github.com/smc-public/oob_gpu_exporter
+module github.com/firmus-public/oob_gpu_exporter
 
 go 1.21
 

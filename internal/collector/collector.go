@@ -8,10 +8,10 @@ import (
 	"sync"
 	"sync/atomic"
 
+	"github.com/firmus-public/oob_gpu_exporter/internal/config"
+	"github.com/firmus-public/oob_gpu_exporter/internal/version"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/common/expfmt"
-	"github.com/smc-public/oob_gpu_exporter/internal/config"
-	"github.com/smc-public/oob_gpu_exporter/internal/version"
 )
 
 var mu sync.Mutex
@@ -79,7 +79,7 @@ func NewCollector() *Collector {
 		GPUInfo: prometheus.NewDesc(
 			prometheus.BuildFQName(prefix, "gpu", "info"),
 			"Information about the GPU",
-			[]string{"id", "manufacturer", "model", "part_number", "serial_number", "uuid"}, nil,
+			[]string{"id", "manufacturer", "model", "part_number", "serial_number", "guid", "slot"}, nil,
 		),
 		GPUState: prometheus.NewDesc(
 			prometheus.BuildFQName(prefix, "gpu", "state"),

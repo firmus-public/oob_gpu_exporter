@@ -1,0 +1,45 @@
+{
+  "@odata.type": "#PCIeDevice.v1_4_0.PCIeDevice",
+  "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/GPU4",
+  "Id": "GPU4",
+  "Name": "GPU4",
+  "Description": "GPU Device 4",
+  "Model": "NVIDIA A100-SXM4-80GB",
+  "SerialNumber": "1652622007976",
+  "PartNumber": "20B2-895-A1",
+  "FirmwareVersion": "92.00.45.00.05",
+  "DeviceType": "MultiFunction",
+  "Status": {
+    "State": "Enabled",
+    "Health": "OK",
+    "HealthRollup": "OK"
+  },
+  "PCIeInterface": {
+    "PCIeType": "Gen-1",
+    "MaxPCIeType": "Gen0",
+    "LanesInUse": -1,
+    "MaxLanes": -1
+  },
+  "PCIeFunctions": {
+    "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/GPU4/PCIeFunctions"
+  },
+  "Links": {
+    "Chassis": [
+      {
+        "@odata.id": "/redfish/v1/Chassis/1"
+      }
+    ]
+  },
+  "Oem": {
+    "Supermicro": {
+      "@odata.type": "#SmcGPUExtensions.v1_0_0.GPU",
+      "GPUSlot": 0,
+      "Board part number": "692-2G506-0210-003",
+      "Driver": "Loaded",
+      "Memory vendor": "",
+      "Memory part number": "",
+      "GPU GUID": "2691b86c98cd8e54bf44749c46d0611d",
+      "InfoROM version": "G506.0210.00.03"
+    }
+  }
+}

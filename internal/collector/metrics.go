@@ -1,36 +1,37 @@
 package collector
 
 import (
+	"strconv"
 	"strings"
 
 	"github.com/prometheus/client_golang/prometheus"
 )
 
-func gpuHealth2value(gpuHealth string) (bool, int) {
-	switch gpuHealth {
-	case "Critical":
-		return true, 0
-	case "Degraded":
-		return true, 1
-	case "OK":
-		return true, 2
-	case "Unknown":
-		return true, 3
+func gpuHealth2value(gpuHealth string) int {
+	switch strings.ToLower(gpuHealth) {
+	case "critical":
+		return 0
+	case "degraded", "warning":
+		return 1
+	case "ok":
+		return 2
+	case "unknown":
+		return 3
 	default:
-		return false, 0
+		return -1
 	}
 }
-                
-func gpuState2value(gpuState string) (bool, int) {
-	switch gpuState {
-	case "Available":
-		return true, 0
-	case "NotApplicable":
-		return true, 1
-	case "Unavailable":
-		return true, 2
+
+func gpuState2value(gpuState string) int {
+	switch strings.ToLower(gpuState) {
+	case "available", "enabled":
+		return 0
+	case "notapplicable":
+		return 1
+	case "unavailable", "disabled":
+		return 2
 	default:
-		return false, 0
+		return -1
 	}
 }
 
@@ -83,32 +84,71 @@ func (mc *Collector) NewGPUInfo(ch chan<- prometheus.Metric, m *GPUInfo) {
 		strings.TrimSpace(m.Model),
 		strings.TrimSpace(m.PartNumber),
 		strings.TrimSpace(m.SerialNumber),
-		strings.TrimSpace(m.UUID),
+		strings.TrimSpace(m.GPUGUID),
+		strconv.Itoa(m.Slot),
 	)
 }
 
-func (mc *Collector) NewGPUState(ch chan<- prometheus.Metric, m *DellVideoMember) {
-	if ok, value := gpuState2value(m.GPUState); ok {
-		ch <- prometheus.MustNewConstMetric(
-			mc.GPUState,
-			prometheus.GaugeValue,
-			float64(value),
-			m.Id,
-			m.GPUState,
-		)
-	}
+func (mc *Collector) NewDellGPUState(ch chan<- prometheus.Metric, m *DellVideoMember) {
+	value := gpuState2value(m.GPUState)
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUState,
+		prometheus.GaugeValue,
+		float64(value),
+		m.Id,
+		m.GPUState,
+	)
 }
 
-func (mc *Collector) NewGPUHealth(ch chan<- prometheus.Metric, m *DellVideoMember) {
-	if ok, value := gpuHealth2value(m.GPUHealth); ok {
-		ch <- prometheus.MustNewConstMetric(
-			mc.GPUHealth,
-			prometheus.GaugeValue,
-			float64(value),
-			m.Id,
-			m.GPUHealth,
-		)
-	}
+func (mc *Collector) NewDellGPUHealth(ch chan<- prometheus.Metric, m *DellVideoMember) {
+	value := gpuHealth2value(m.GPUHealth)
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUHealth,
+		prometheus.GaugeValue,
+		float64(value),
+		m.Id,
+		m.GPUHealth,
+	)
+}
+
+func (mc *Collector) NewSupermicroGPUHealth(ch chan<- prometheus.Metric, m *PCIeDeviceResponse) {
+	value := gpuHealth2value(m.Status.Health)
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUHealth,
+		prometheus.GaugeValue,
+		float64(value),
+		m.ID,
+		m.Status.Health,
+	)
+}
+
+func (mc *Collector) NewSupermicroGPUState(ch chan<- prometheus.Metric, m *PCIeDeviceResponse) {
+	value := gpuState2value(m.Status.State)
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUState,
+		prometheus.GaugeValue,
+		float64(value),
+		m.ID,
+		m.Status.State,
+	)
+}
+
+func (mc *Collector) NewSmcGPUTemp(ch chan<- prometheus.Metric, id string, value float64) {
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUPrimaryGPUTemperatureCelsius,
+		prometheus.GaugeValue,
+		value,
+		id,
+	)
+}
+
+func (mc *Collector) NewSmcGPUMemoryTemp(ch chan<- prometheus.Metric, id string, value float64) {
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUMemoryTemperatureCelsius,
+		prometheus.GaugeValue,
+		value,
+		id,
+	)
 }
 
 func (mc *Collector) NewBoardPowerSupplyStatus(ch chan<- prometheus.Metric, m *DellGPUSensorMember) {
@@ -177,7 +217,7 @@ func (mc *Collector) NewGPUOperatingSpeedMHz(ch chan<- prometheus.Metric, m *GPU
 	)
 }
 
-func (mc *Collector) NewGPUThrottleReasons(ch chan<- prometheus.Metric, v []string , id string) {
+func (mc *Collector) NewGPUThrottleReasons(ch chan<- prometheus.Metric, v []string, id string) {
 	for _, reason := range v {
 		// TODO: default all possible reason metrics to zero when known
 		ch <- prometheus.MustNewConstMetric(
@@ -190,7 +230,7 @@ func (mc *Collector) NewGPUThrottleReasons(ch chan<- prometheus.Metric, v []stri
 	}
 }
 
-func (mc *Collector) NewGPUSMUtilizationPercent(ch chan<- prometheus.Metric, v int , id string) {
+func (mc *Collector) NewGPUSMUtilizationPercent(ch chan<- prometheus.Metric, v int, id string) {
 	ch <- prometheus.MustNewConstMetric(
 		mc.GPUSMUtilizationPercent,
 		prometheus.GaugeValue,
@@ -199,7 +239,7 @@ func (mc *Collector) NewGPUSMUtilizationPercent(ch chan<- prometheus.Metric, v i
 	)
 }
 
-func (mc *Collector) NewGPUSMActivityPercent(ch chan<- prometheus.Metric, v float64 , id string) {
+func (mc *Collector) NewGPUSMActivityPercent(ch chan<- prometheus.Metric, v float64, id string) {
 	ch <- prometheus.MustNewConstMetric(
 		mc.GPUSMActivityPercent,
 		prometheus.GaugeValue,
@@ -208,7 +248,7 @@ func (mc *Collector) NewGPUSMActivityPercent(ch chan<- prometheus.Metric, v floa
 	)
 }
 
-func (mc *Collector) NewGPUSMOccupancyPercent(ch chan<- prometheus.Metric, v float64 , id string) {
+func (mc *Collector) NewGPUSMOccupancyPercent(ch chan<- prometheus.Metric, v float64, id string) {
 	ch <- prometheus.MustNewConstMetric(
 		mc.GPUSMOccupancyPercent,
 		prometheus.GaugeValue,
@@ -217,7 +257,7 @@ func (mc *Collector) NewGPUSMOccupancyPercent(ch chan<- prometheus.Metric, v flo
 	)
 }
 
-func (mc *Collector) NewGPUTensorCoreActivityPercent(ch chan<- prometheus.Metric, v float64 , id string) {
+func (mc *Collector) NewGPUTensorCoreActivityPercent(ch chan<- prometheus.Metric, v float64, id string) {
 	ch <- prometheus.MustNewConstMetric(
 		mc.GPUTensorCoreActivityPercent,
 		prometheus.GaugeValue,
@@ -226,7 +266,7 @@ func (mc *Collector) NewGPUTensorCoreActivityPercent(ch chan<- prometheus.Metric
 	)
 }
 
-func (mc *Collector) NewGPUHMMAUtilizationPercent(ch chan<- prometheus.Metric, v float64 , id string) {
+func (mc *Collector) NewGPUHMMAUtilizationPercent(ch chan<- prometheus.Metric, v float64, id string) {
 	ch <- prometheus.MustNewConstMetric(
 		mc.GPUHMMAUtilizationPercent,
 		prometheus.GaugeValue,
@@ -235,7 +275,7 @@ func (mc *Collector) NewGPUHMMAUtilizationPercent(ch chan<- prometheus.Metric, v
 	)
 }
 
-func (mc *Collector) NewGPUPCIeRawTxBandwidthGbps(ch chan<- prometheus.Metric, v float64 , id string) {
+func (mc *Collector) NewGPUPCIeRawTxBandwidthGbps(ch chan<- prometheus.Metric, v float64, id string) {
 	ch <- prometheus.MustNewConstMetric(
 		mc.GPUPCIeRawTxBandwidthGbps,
 		prometheus.GaugeValue,
@@ -244,7 +284,7 @@ func (mc *Collector) NewGPUPCIeRawTxBandwidthGbps(ch chan<- prometheus.Metric, v
 	)
 }
 
-func (mc *Collector) NewGPUPCIeRawRxBandwidthGbps(ch chan<- prometheus.Metric, v float64 , id string) {
+func (mc *Collector) NewGPUPCIeRawRxBandwidthGbps(ch chan<- prometheus.Metric, v float64, id string) {
 	ch <- prometheus.MustNewConstMetric(
 		mc.GPUPCIeRawRxBandwidthGbps,
 		prometheus.GaugeValue,
@@ -253,7 +293,7 @@ func (mc *Collector) NewGPUPCIeRawRxBandwidthGbps(ch chan<- prometheus.Metric, v
 	)
 }
 
-func (mc *Collector) NewGPUCurrentPCIeLinkSpeed(ch chan<- prometheus.Metric, v int , id string) {
+func (mc *Collector) NewGPUCurrentPCIeLinkSpeed(ch chan<- prometheus.Metric, v int, id string) {
 	ch <- prometheus.MustNewConstMetric(
 		mc.GPUCurrentPCIeLinkSpeed,
 		prometheus.GaugeValue,
@@ -262,7 +302,7 @@ func (mc *Collector) NewGPUCurrentPCIeLinkSpeed(ch chan<- prometheus.Metric, v i
 	)
 }
 
-func (mc *Collector) NewGPUMaxSupportedPCIeLinkSpeed(ch chan<- prometheus.Metric, v int , id string) {
+func (mc *Collector) NewGPUMaxSupportedPCIeLinkSpeed(ch chan<- prometheus.Metric, v int, id string) {
 	ch <- prometheus.MustNewConstMetric(
 		mc.GPUMaxSupportedPCIeLinkSpeed,
 		prometheus.GaugeValue,
@@ -271,7 +311,7 @@ func (mc *Collector) NewGPUMaxSupportedPCIeLinkSpeed(ch chan<- prometheus.Metric
 	)
 }
 
-func (mc *Collector) NewGPUDRAMUtilizationPercent(ch chan<- prometheus.Metric, v float64 , id string) {
+func (mc *Collector) NewGPUDRAMUtilizationPercent(ch chan<- prometheus.Metric, v float64, id string) {
 	ch <- prometheus.MustNewConstMetric(
 		mc.GPUDRAMUtilizationPercent,
 		prometheus.GaugeValue,
@@ -280,7 +320,7 @@ func (mc *Collector) NewGPUDRAMUtilizationPercent(ch chan<- prometheus.Metric, v
 	)
 }
 
-func (mc *Collector) NewGPUPCIeCorrectableErrorCount(ch chan<- prometheus.Metric, v int , id string) {
+func (mc *Collector) NewGPUPCIeCorrectableErrorCount(ch chan<- prometheus.Metric, v int, id string) {
 	ch <- prometheus.MustNewConstMetric(
 		mc.GPUPCIeCorrectableErrorCount,
 		prometheus.CounterValue,

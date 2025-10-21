@@ -7,9 +7,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/smc-public/oob_gpu_exporter/internal/config"
-	"github.com/smc-public/oob_gpu_exporter/internal/log"
-	"github.com/smc-public/oob_gpu_exporter/internal/version"
+	"github.com/firmus-public/oob_gpu_exporter/internal/config"
+	"github.com/firmus-public/oob_gpu_exporter/internal/log"
+	"github.com/firmus-public/oob_gpu_exporter/internal/version"
 )
 
 func main() {

@@ -2,9 +2,11 @@ package collector
 
 import (
 	"fmt"
+	"regexp"
+	"strconv"
 	"strings"
 
-	"github.com/smc-public/oob_gpu_exporter/internal/config"
+	"github.com/firmus-public/oob_gpu_exporter/internal/config"
 	"github.com/prometheus/client_golang/prometheus"
 )
 
@@ -25,15 +27,19 @@ type Client struct {
 	vendor      int
 	systemPath  string
 	procPath    string
+	chassisPath string
+	devicesPath string
+	thermalPath string
 }
 
 type GPUInfo struct {
-	Id                    string
-	Manufacturer          string
-	Model                 string
-	PartNumber            string
-	SerialNumber          string
-	UUID                 string
+	Id           string
+	Manufacturer string
+	Model        string
+	PartNumber   string
+	SerialNumber string
+	GPUGUID      string
+	Slot         int
 }
 
 func NewClient(h *config.HostConfig) *Client {
@@ -60,10 +66,24 @@ func (client *Client) findAllEndpoints() bool {
 	var root V1Response
 	var group GroupResponse
 	var system SystemResponse
+	var chassis ChassisResponse
 	var ok bool
 
 	// Root
 	ok = client.redfish.Get(redfishRootPath, &root)
+	if !ok {
+		return false
+	}
+
+	// Chassis
+	ok = client.redfish.Get(root.Chassis.OdataId, &group)
+	if !ok {
+		return false
+	}
+
+	client.chassisPath = group.Members[0].OdataId
+
+	ok = client.redfish.Get(client.chassisPath, &chassis)
 	if !ok {
 		return false
 	}
@@ -82,10 +102,12 @@ func (client *Client) findAllEndpoints() bool {
 	}
 
 	client.procPath = system.Processors.OdataId
+	client.devicesPath = chassis.PCIeDevices.OdataId
+	client.thermalPath = chassis.Thermal.OdataId
 
 	// Vendor
 	m := strings.ToLower(system.Manufacturer)
-	if strings.Contains(m, "dell") || strings.Contains(m, "sustainable"){
+	if strings.Contains(m, "dell") || strings.Contains(m, "sustainable") {
 		client.vendor = DELL
 	} else if strings.Contains(m, "hpe") {
 		client.vendor = HPE
@@ -107,6 +129,17 @@ func (client *Client) findAllEndpoints() bool {
 }
 
 func (client *Client) RefreshGPUs(mc *Collector, ch chan<- prometheus.Metric) bool {
+	switch client.vendor {
+	case DELL:
+		return client.refreshDellGPUs(mc, ch)
+	case SUPERMICRO:
+		return client.refreshSupermicroGPUs(mc, ch)
+	default:
+		return false
+	}
+}
+
+func (client *Client) refreshDellGPUs(mc *Collector, ch chan<- prometheus.Metric) bool {
 	group := GroupResponse{}
 	ok := client.redfish.Get(client.procPath, &group)
 	if !ok {
@@ -117,24 +150,22 @@ func (client *Client) RefreshGPUs(mc *Collector, ch chan<- prometheus.Metric) bo
 
 	dellVideo := DellVideo{}
 
-	if client.vendor == DELL {
-		// Get dell video inventory
+	// Get dell video inventory
 
-		dellVideoPath := fmt.Sprintf("%s/Oem/Dell/DellVideo", client.systemPath)
-		client.redfish.Get(dellVideoPath, &dellVideo)
-		dellGPUSensorPath := fmt.Sprintf("%s/Oem/Dell/DellGPUSensors", client.systemPath)
+	dellVideoPath := fmt.Sprintf("%s/Oem/Dell/DellVideo", client.systemPath)
+	client.redfish.Get(dellVideoPath, &dellVideo)
+	dellGPUSensorPath := fmt.Sprintf("%s/Oem/Dell/DellGPUSensors", client.systemPath)
 
-		// Get dell GPU sensor metrics
+	// Get dell GPU sensor metrics
 
-		dellGPUSensors := DellGPUSensors{}
-		if ok := client.redfish.Get(dellGPUSensorPath, &dellGPUSensors); ok {
-			for _, v := range dellGPUSensors.Members {
-				mc.NewBoardPowerSupplyStatus(ch, &v)
-				mc.NewMemoryTemperatureCelsius(ch, &v)
-				mc.NewPowerBrakeStatus(ch, &v)
-				mc.NewPrimaryGPUTemperatureCelsius(ch, &v)
-				mc.NewThermalAlertStatus(ch, &v)
-			}
+	dellGPUSensors := DellGPUSensors{}
+	if ok := client.redfish.Get(dellGPUSensorPath, &dellGPUSensors); ok {
+		for _, v := range dellGPUSensors.Members {
+			mc.NewBoardPowerSupplyStatus(ch, &v)
+			mc.NewMemoryTemperatureCelsius(ch, &v)
+			mc.NewPowerBrakeStatus(ch, &v)
+			mc.NewPrimaryGPUTemperatureCelsius(ch, &v)
+			mc.NewThermalAlertStatus(ch, &v)
 		}
 	}
 
@@ -161,15 +192,13 @@ func (client *Client) RefreshGPUs(mc *Collector, ch chan<- prometheus.Metric) bo
 		gpuInfo.Model = resp.Model
 		gpuInfo.PartNumber = resp.PartNumber
 
-		if client.vendor == DELL {
-			for _, v := range dellVideo.Members {
-				if v.Id == resp.Id {
-					gpuInfo.UUID = v.GPUGUID
-					gpuInfo.SerialNumber = v.SerialNumber
-					mc.NewGPUState(ch, &v)
-					mc.NewGPUHealth(ch, &v)
-					break
-				}
+		for _, v := range dellVideo.Members {
+			if v.Id == resp.Id {
+				gpuInfo.GPUGUID = v.GPUGUID
+				gpuInfo.SerialNumber = v.SerialNumber
+				mc.NewDellGPUState(ch, &v)
+				mc.NewDellGPUHealth(ch, &v)
+				break
 			}
 		}
 
@@ -220,6 +249,97 @@ func (client *Client) RefreshGPUs(mc *Collector, ch chan<- prometheus.Metric) bo
 
 			mc.NewGPUMemoryBandwidthPercent(ch, resp.Id, &gpuMemoryMetrics)
 			mc.NewGPUMemoryOperatingSpeedMHz(ch, resp.Id, &gpuMemoryMetrics)
+		}
+	}
+
+	return true
+}
+
+var GPU_REGEXP = regexp.MustCompile(`GPU (.*) Temp`)
+var HBM_REGEXP = regexp.MustCompile(`HBM (.*) Temp`)
+
+func (client *Client) refreshSupermicroGPUs(mc *Collector, ch chan<- prometheus.Metric) bool {
+	group := GroupResponse{}
+	ok := client.redfish.Get(client.devicesPath, &group)
+	if !ok {
+		return false
+	}
+
+	// Get GPU metrics
+
+	for _, c := range group.Members.GetLinks() {
+		if !strings.Contains(c, "GPU") {
+			continue
+		}
+
+		resp := PCIeDeviceResponse{}
+
+		ok = client.redfish.Get(c, &resp)
+		if !ok {
+			continue
+		}
+
+		gpuInfo := GPUInfo{}
+		gpuInfo.Id = resp.ID
+		gpuInfo.Model = resp.Model
+		gpuInfo.PartNumber = resp.PartNumber
+		gpuInfo.SerialNumber = resp.SerialNumber
+
+		if resp.Oem != nil && resp.Oem.Supermicro != nil {
+			gpuInfo.Manufacturer = resp.Oem.Supermicro.GPUVendor
+			if resp.Oem.Supermicro.GPUGUID1 != "" {
+				gpuInfo.GPUGUID = resp.Oem.Supermicro.GPUGUID1
+			} else {
+				gpuInfo.GPUGUID = resp.Oem.Supermicro.GPUGUID2
+			}
+			gpuInfo.Slot = resp.Oem.Supermicro.GPUSlot
+		}
+
+		mc.NewGPUInfo(ch, &gpuInfo)
+		mc.NewSupermicroGPUHealth(ch, &resp)
+		mc.NewSupermicroGPUState(ch, &resp)
+	}
+
+	thermalResp := ThermalResponse{}
+	ok = client.redfish.Get(client.thermalPath, &thermalResp)
+
+	if ok {
+		for _, t := range thermalResp.Temperatures {
+			if t.Name == "GPU Temp" && t.Oem != nil && t.Oem.Supermicro != nil {
+				for name, value := range t.Oem.Supermicro.Details {
+					matches := GPU_REGEXP.FindStringSubmatch(name)
+					if matches != nil {
+						temp, err := strconv.ParseFloat(value, 64)
+						if err == nil {
+							id := "GPU" + matches[1]
+							mc.NewSmcGPUTemp(ch, id, temp)
+						}
+					}
+				}
+				continue
+			}
+
+			if t.Name == "HBM Temp" && t.Oem != nil && t.Oem.Supermicro != nil {
+				for name, value := range t.Oem.Supermicro.Details {
+					matches := HBM_REGEXP.FindStringSubmatch(name)
+					if matches != nil {
+						temp, err := strconv.ParseFloat(value, 64)
+						if err == nil {
+							id := "GPU" + matches[1]
+							mc.NewSmcGPUMemoryTemp(ch, id, temp)
+						}
+					}
+				}
+				continue
+			}
+
+			re := regexp.MustCompile(`(GPU\d+) Temp`)
+			matches := re.FindStringSubmatch(t.Name)
+			if matches != nil {
+				id := matches[1]
+				mc.NewSmcGPUTemp(ch, id, t.ReadingCelsius)
+				continue
+			}
 		}
 	}
 

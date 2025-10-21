@@ -1,0 +1,63 @@
+{
+  "@odata.type": "#Chassis.v1_11_0.Chassis",
+  "@odata.id": "/redfish/v1/Chassis/1",
+  "Id": "1",
+  "Name": "Computer System Chassis",
+  "ChassisType": "RackMount",
+  "SerialNumber": "C438G0L32C30033",
+  "PartNumber": "CSE-438G",
+  "AssetTag": "",
+  "IndicatorLED": "Off",
+  "PowerState": "On",
+  "Status": {
+    "State": "Enabled",
+    "Health": "Critical",
+    "HealthRollup": "Critical"
+  },
+  "Power": {
+    "@odata.id": "/redfish/v1/Chassis/1/Power"
+  },
+  "PCIeDevices": {
+    "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices"
+  },
+  "Thermal": {
+    "@odata.id": "/redfish/v1/Chassis/1/Thermal"
+  },
+  "NetworkAdapters": {
+    "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters"
+  },
+  "PCIeSlots": {
+    "@odata.id": "/redfish/v1/Chassis/1/PCIeSlots"
+  },
+  "Sensors": {
+    "@odata.id": "/redfish/v1/Chassis/1/Sensors"
+  },
+  "Memory": {
+    "@odata.id": "/redfish/v1/Systems/1/Memory"
+  },
+  "Links": {
+    "ComputerSystems": [
+      {
+        "@odata.id": "/redfish/v1/Systems/1"
+      }
+    ],
+    "ManagedBy": [
+      {
+        "@odata.id": "/redfish/v1/Managers/1"
+      }
+    ],
+    "ManagersInChassis": [
+      {
+        "@odata.id": "/redfish/v1/Managers/1"
+      }
+    ]
+  },
+  "Oem": {
+    "Supermicro": {
+      "@odata.type": "#SmcChassisExtensions.v1_0_0.Chassis",
+      "BoardSerialNumber": "UM228S605158",
+      "GUID": "32323031-4D53-3CEC-EF35-500C00000000",
+      "BoardID": "0x1c1e"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "@odata.type": "#PCIeDeviceCollection.PCIeDeviceCollection",
+  "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices",
+  "Name": "PCIe Device Collection",
+  "Members@odata.count": 18,
+  "Members": [
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC1"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC2"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC3"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC4"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC5"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC6"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/GPU1"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/GPU2"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/GPU3"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/GPU4"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/GPU9"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/GPU10"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/GPU11"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/GPU12"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NVMeSSD1"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NVMeSSD2"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NVMeSSD3"
+    },
+    {
+      "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NVMeSSD4"
+    }
+  ],
+  "@odata.etag": "\"0789ebdb5302f0032e5185c7aac17374\""
+}

@@ -1,0 +1,56 @@
+# HELP oob_gpu_exporter_build_info Constant metric with build information for the exporter
+# TYPE oob_gpu_exporter_build_info untyped
+oob_gpu_exporter_build_info{goversion="go1.23.1",revision="",version=""} 1
+# HELP oob_gpu_exporter_scrape_errors_total Total number of errors encountered while scraping target
+# TYPE oob_gpu_exporter_scrape_errors_total counter
+oob_gpu_exporter_scrape_errors_total 0
+# HELP oob_gpu_health Health status of the GPU
+# TYPE oob_gpu_health gauge
+oob_gpu_health{id="GPU1",status="OK"} 2
+oob_gpu_health{id="GPU2",status="OK"} 2
+oob_gpu_health{id="GPU3",status="OK"} 2
+oob_gpu_health{id="GPU4",status="OK"} 2
+oob_gpu_health{id="GPU5",status="OK"} 2
+oob_gpu_health{id="GPU6",status="OK"} 2
+oob_gpu_health{id="GPU7",status="OK"} 2
+oob_gpu_health{id="GPU8",status="OK"} 2
+# HELP oob_gpu_info Information about the GPU
+# TYPE oob_gpu_info untyped
+oob_gpu_info{guid="1e1e134ddc32de1bc21d60aacb795287",id="GPU3",manufacturer="",model="NVIDIA A100-SXM4-80GB",part_number="20B2-895-A1",serial_number="1652622007255",slot="0"} 1
+oob_gpu_info{guid="2691b86c98cd8e54bf44749c46d0611d",id="GPU4",manufacturer="",model="NVIDIA A100-SXM4-80GB",part_number="20B2-895-A1",serial_number="1652622007976",slot="0"} 1
+oob_gpu_info{guid="28d8353d3a6042e257564eb18de635a4",id="GPU1",manufacturer="",model="NVIDIA A100-SXM4-80GB",part_number="20B2-895-A1",serial_number="1652622004118",slot="0"} 1
+oob_gpu_info{guid="31c6b793912a880e836766bcb82060f5",id="GPU7",manufacturer="",model="NVIDIA A100-SXM4-80GB",part_number="20B2-895-A1",serial_number="1652622011665",slot="0"} 1
+oob_gpu_info{guid="96cc43872a372adea9578b6ceed8240f",id="GPU2",manufacturer="",model="NVIDIA A100-SXM4-80GB",part_number="20B2-895-A1",serial_number="1652622007241",slot="0"} 1
+oob_gpu_info{guid="e8867d794a19f41ca070c81f450080fa",id="GPU5",manufacturer="",model="NVIDIA A100-SXM4-80GB",part_number="20B2-895-A1",serial_number="1652622005034",slot="0"} 1
+oob_gpu_info{guid="f7e536e0af4eee6f5e79d7bb83874612",id="GPU6",manufacturer="",model="NVIDIA A100-SXM4-80GB",part_number="20B2-895-A1",serial_number="1652622006387",slot="0"} 1
+oob_gpu_info{guid="f97087a64b51336ee26f53c59702abf3",id="GPU8",manufacturer="",model="NVIDIA A100-SXM4-80GB",part_number="20B2-895-A1",serial_number="1652622006124",slot="0"} 1
+# HELP oob_gpu_memory_temperature_celsius Temperature of the GPU memory in celsius
+# TYPE oob_gpu_memory_temperature_celsius gauge
+oob_gpu_memory_temperature_celsius{id="GPU1"} 36
+oob_gpu_memory_temperature_celsius{id="GPU2"} 36
+oob_gpu_memory_temperature_celsius{id="GPU3"} 33
+oob_gpu_memory_temperature_celsius{id="GPU4"} 33
+oob_gpu_memory_temperature_celsius{id="GPU5"} 33
+oob_gpu_memory_temperature_celsius{id="GPU6"} 36
+oob_gpu_memory_temperature_celsius{id="GPU7"} 33
+oob_gpu_memory_temperature_celsius{id="GPU8"} 36
+# HELP oob_gpu_primary_gpu_temperature_celsius Primary temperature of the GPU in celsius
+# TYPE oob_gpu_primary_gpu_temperature_celsius gauge
+oob_gpu_primary_gpu_temperature_celsius{id="GPU1"} 38
+oob_gpu_primary_gpu_temperature_celsius{id="GPU2"} 37
+oob_gpu_primary_gpu_temperature_celsius{id="GPU3"} 36
+oob_gpu_primary_gpu_temperature_celsius{id="GPU4"} 36
+oob_gpu_primary_gpu_temperature_celsius{id="GPU5"} 37
+oob_gpu_primary_gpu_temperature_celsius{id="GPU6"} 36
+oob_gpu_primary_gpu_temperature_celsius{id="GPU7"} 35
+oob_gpu_primary_gpu_temperature_celsius{id="GPU8"} 38
+# HELP oob_gpu_state State of the GPU
+# TYPE oob_gpu_state gauge
+oob_gpu_state{id="GPU1",state="Enabled"} 0
+oob_gpu_state{id="GPU2",state="Enabled"} 0
+oob_gpu_state{id="GPU3",state="Enabled"} 0
+oob_gpu_state{id="GPU4",state="Enabled"} 0
+oob_gpu_state{id="GPU5",state="Enabled"} 0
+oob_gpu_state{id="GPU6",state="Enabled"} 0
+oob_gpu_state{id="GPU7",state="Enabled"} 0
+oob_gpu_state{id="GPU8",state="Enabled"} 0
