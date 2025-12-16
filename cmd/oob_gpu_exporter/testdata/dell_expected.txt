@@ -28,9 +28,6 @@ oob_gpu_consumed_power_watt{id="Video.Slot.25-1"} 78.7
 oob_gpu_consumed_power_watt{id="Video.Slot.26-1"} 79
 oob_gpu_consumed_power_watt{id="Video.Slot.27-1"} 80.2
 oob_gpu_consumed_power_watt{id="Video.Slot.28-1"} 79.4
-# HELP oob_gpu_num_gpus The number of GPUs detected
-# TYPE oob_gpu_num_gpus counter
-oob_gpu_num_gpus 8
 # HELP oob_gpu_current_pcie_link_speed Current PCIe link speed of the GPU
 # TYPE oob_gpu_current_pcie_link_speed gauge
 oob_gpu_current_pcie_link_speed{id="Video.Slot.21-1"} 5
@@ -127,6 +124,9 @@ oob_gpu_memory_temperature_celsius{id="Video.Slot.25-1"} 41
 oob_gpu_memory_temperature_celsius{id="Video.Slot.26-1"} 41
 oob_gpu_memory_temperature_celsius{id="Video.Slot.27-1"} 41
 oob_gpu_memory_temperature_celsius{id="Video.Slot.28-1"} 41
+# HELP oob_gpu_num_gpus The number of GPUs detected
+# TYPE oob_gpu_num_gpus counter
+oob_gpu_num_gpus 8
 # HELP oob_gpu_operating_speed_mhz Operating speed of the GPU in Mhz
 # TYPE oob_gpu_operating_speed_mhz gauge
 oob_gpu_operating_speed_mhz{id="Video.Slot.21-1"} 345
