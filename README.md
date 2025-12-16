@@ -55,7 +55,7 @@ The exporter can expose the metrics described below. For each metric you can see
 ```text
 oob_gpu_exporter_build_info{goversion,revision,version}
 oob_gpu_exporter_scrape_errors_total
-oob_gpu_count
+oob_gpu_num_gpus
 oob_gpu_bandwidth_percent{id}
 oob_gpu_board_power_supply_status{id,status}
 oob_gpu_consumed_power_watt{id}

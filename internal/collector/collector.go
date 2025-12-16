@@ -78,7 +78,7 @@ func NewCollector() *Collector {
 			nil, nil,
 		),
         GPUCount: prometheus.NewDesc(
-			prometheus.BuildFQName(prefix, "gpu", "count"),
+			prometheus.BuildFQName(prefix, "gpu", "num_gpus"),
 			"The number of GPUs detected",
 			nil, nil,
 		),
