@@ -74,6 +74,14 @@ func thermalAlertStatus2value(thermalAlertStatus string) (bool, int) {
 	}
 }
 
+func (mc *Collector) NewGPUCount(ch chan<- prometheus.Metric, count int) {
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUCount,
+		prometheus.CounterValue,
+		float64(count),
+	)
+}
+
 func (mc *Collector) NewGPUInfo(ch chan<- prometheus.Metric, m *GPUInfo) {
 	ch <- prometheus.MustNewConstMetric(
 		mc.GPUInfo,

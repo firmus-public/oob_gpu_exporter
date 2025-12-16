@@ -154,10 +154,14 @@ func (client *Client) refreshDellGPUs(mc *Collector, ch chan<- prometheus.Metric
 
 	dellVideoPath := fmt.Sprintf("%s/Oem/Dell/DellVideo", client.systemPath)
 	client.redfish.Get(dellVideoPath, &dellVideo)
-	dellGPUSensorPath := fmt.Sprintf("%s/Oem/Dell/DellGPUSensors", client.systemPath)
+
+    // GPU count
+    var count int = len(dellVideo.Members)
+    mc.NewGPUCount(ch, count)
 
 	// Get dell GPU sensor metrics
 
+    dellGPUSensorPath := fmt.Sprintf("%s/Oem/Dell/DellGPUSensors", client.systemPath)
 	dellGPUSensors := DellGPUSensors{}
 	if ok := client.redfish.Get(dellGPUSensorPath, &dellGPUSensors); ok {
 		for _, v := range dellGPUSensors.Members {

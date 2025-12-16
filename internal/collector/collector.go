@@ -31,6 +31,7 @@ type Collector struct {
 	ExporterScrapeErrorsTotal *prometheus.Desc
 
 	// GPUs
+	GPUCount                        *prometheus.Desc
 	GPUInfo                         *prometheus.Desc
 	GPUState                        *prometheus.Desc
 	GPUHealth                       *prometheus.Desc
@@ -74,6 +75,11 @@ func NewCollector() *Collector {
 		ExporterScrapeErrorsTotal: prometheus.NewDesc(
 			prometheus.BuildFQName(prefix, "gpu_exporter", "scrape_errors_total"),
 			"Total number of errors encountered while scraping target",
+			nil, nil,
+		),
+        GPUCount: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "count"),
+			"The number of GPUs detected",
 			nil, nil,
 		),
 		GPUInfo: prometheus.NewDesc(
@@ -214,6 +220,7 @@ func NewCollector() *Collector {
 func (collector *Collector) Describe(ch chan<- *prometheus.Desc) {
 	ch <- collector.ExporterBuildInfo
 	ch <- collector.ExporterScrapeErrorsTotal
+	ch <- collector.GPUCount
 	ch <- collector.GPUInfo
 	ch <- collector.GPUHealth
 	ch <- collector.GPUState
