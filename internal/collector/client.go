@@ -154,10 +154,14 @@ func (client *Client) refreshDellGPUs(mc *Collector, ch chan<- prometheus.Metric
 
 	dellVideoPath := fmt.Sprintf("%s/Oem/Dell/DellVideo", client.systemPath)
 	client.redfish.Get(dellVideoPath, &dellVideo)
-	dellGPUSensorPath := fmt.Sprintf("%s/Oem/Dell/DellGPUSensors", client.systemPath)
+
+    // GPU count
+    var count = len(dellVideo.Members)
+    mc.NewGPUCount(ch, count)
 
 	// Get dell GPU sensor metrics
 
+    dellGPUSensorPath := fmt.Sprintf("%s/Oem/Dell/DellGPUSensors", client.systemPath)
 	dellGPUSensors := DellGPUSensors{}
 	if ok := client.redfish.Get(dellGPUSensorPath, &dellGPUSensors); ok {
 		for _, v := range dellGPUSensors.Members {
@@ -266,11 +270,12 @@ func (client *Client) refreshSupermicroGPUs(mc *Collector, ch chan<- prometheus.
 	}
 
 	// Get GPU metrics
-
+    var count = 0
 	for _, c := range group.Members.GetLinks() {
 		if !strings.Contains(c, "GPU") {
 			continue
 		}
+        count++
 
 		resp := PCIeDeviceResponse{}
 
@@ -299,6 +304,8 @@ func (client *Client) refreshSupermicroGPUs(mc *Collector, ch chan<- prometheus.
 		mc.NewSupermicroGPUHealth(ch, &resp)
 		mc.NewSupermicroGPUState(ch, &resp)
 	}
+
+    mc.NewGPUCount(ch, count)
 
 	thermalResp := ThermalResponse{}
 	ok = client.redfish.Get(client.thermalPath, &thermalResp)
