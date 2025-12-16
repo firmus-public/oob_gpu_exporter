@@ -1,3 +1,6 @@
+# HELP oob_gpu_count The number of GPUs detected
+# TYPE oob_gpu_count counter
+oob_gpu_count 8
 # HELP oob_gpu_exporter_build_info Constant metric with build information for the exporter
 # TYPE oob_gpu_exporter_build_info untyped
 oob_gpu_exporter_build_info{goversion="go1.23.1",revision="",version=""} 1
