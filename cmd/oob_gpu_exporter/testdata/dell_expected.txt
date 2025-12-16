@@ -28,6 +28,9 @@ oob_gpu_consumed_power_watt{id="Video.Slot.25-1"} 78.7
 oob_gpu_consumed_power_watt{id="Video.Slot.26-1"} 79
 oob_gpu_consumed_power_watt{id="Video.Slot.27-1"} 80.2
 oob_gpu_consumed_power_watt{id="Video.Slot.28-1"} 79.4
+# HELP oob_gpu_count The number of GPUs detected
+# TYPE oob_gpu_count counter
+oob_gpu_count 8
 # HELP oob_gpu_current_pcie_link_speed Current PCIe link speed of the GPU
 # TYPE oob_gpu_current_pcie_link_speed gauge
 oob_gpu_current_pcie_link_speed{id="Video.Slot.21-1"} 5
