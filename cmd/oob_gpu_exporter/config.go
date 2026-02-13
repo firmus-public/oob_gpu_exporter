@@ -3,10 +3,10 @@ package main
 import (
 	"time"
 
-	"github.com/fsnotify/fsnotify"
 	"github.com/firmus-public/oob_gpu_exporter/internal/collector"
 	"github.com/firmus-public/oob_gpu_exporter/internal/config"
 	"github.com/firmus-public/oob_gpu_exporter/internal/log"
+	"github.com/fsnotify/fsnotify"
 )
 
 func ReloadConfig(filename string) {
@@ -56,7 +56,7 @@ func WatchConfig(filename string) {
 		log.Error("Failed to start file watcher: %v", err)
 		return
 	}
-	defer func(){
+	defer func() {
 		err := watcher.Close()
 		if err != nil {
 			log.Error("Failed to close file watcher: %v", err)

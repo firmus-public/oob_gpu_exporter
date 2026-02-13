@@ -22,45 +22,57 @@ func TestDell(t *testing.T) {
 	server := NewTestServer(t, "dell")
 	defer server.Close()
 
-    exporter := NewOOBGPUExporter(t, "testdata/config.yml")
+	exporter := NewOOBGPUExporter(t, "testdata/config.yml")
 	defer exporter.Stop()
 
-    resp := getMetrics(t, server)
+	resp := getMetrics(t, server)
 
-    assert_equal(t, "dell_expected.txt", resp)
+	assert_equal(t, "dell_expected.txt", resp)
 }
 
 func TestSYS421GETNRT(t *testing.T) {
 	server := NewTestServer(t, "SYS-421GE-TNRT")
 	defer server.Close()
 
-    exporter := NewOOBGPUExporter(t, "testdata/config.yml")
+	exporter := NewOOBGPUExporter(t, "testdata/config.yml")
 	defer exporter.Stop()
 
-    resp := getMetrics(t, server)
+	resp := getMetrics(t, server)
 
-    assert_equal(t, "SYS-421GE-TNRT_expected.txt", resp)
+	assert_equal(t, "SYS-421GE-TNRT_expected.txt", resp)
 }
 
 func TestAS4124GONARTPlus(t *testing.T) {
 	server := NewTestServer(t, "AS -4124GO-NART+")
 	defer server.Close()
 
-    exporter := NewOOBGPUExporter(t, "testdata/config.yml")
+	exporter := NewOOBGPUExporter(t, "testdata/config.yml")
 	defer exporter.Stop()
 
-    resp := getMetrics(t, server)
+	resp := getMetrics(t, server)
 
-    assert_equal(t, "AS -4124GO-NART+_expected.txt", resp)
+	assert_equal(t, "AS -4124GO-NART+_expected.txt", resp)
+}
+
+func TestGBNVL(t *testing.T) {
+	server := NewTestServer(t, "GB-NVL")
+	defer server.Close()
+
+	exporter := NewOOBGPUExporter(t, "testdata/config.yml")
+	defer exporter.Stop()
+
+	resp := getMetrics(t, server)
+
+	assert_equal(t, "GB-NVL_expected.txt", resp)
 }
 
 // TestServer is a simple HTTPS server that serves files from a specified directory.
 
 type TestServer struct {
-	t   *testing.T
-	server  *httptest.Server
-	Host    string
-	Port	string
+	t      *testing.T
+	server *httptest.Server
+	Host   string
+	Port   string
 }
 
 func NewTestServer(t *testing.T, content string) *TestServer {
@@ -74,7 +86,7 @@ func NewTestServer(t *testing.T, content string) *TestServer {
 	}
 
 	return &TestServer{
-		t: t,
+		t:      t,
 		server: server,
 		Host:   host,
 		Port:   port,
@@ -99,9 +111,9 @@ func fileHandler(baseDir string) http.HandlerFunc {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		_, err = w.Write(data)
-        if err != nil {
-            log.Printf("Error writing response for %s: %v", r.URL.Path, err)
-        }
+		if err != nil {
+			log.Printf("Error writing response for %s: %v", r.URL.Path, err)
+		}
 	}
 }
 
@@ -113,23 +125,23 @@ type OOBGPUExporter struct {
 }
 
 func NewOOBGPUExporter(t *testing.T, configPath string) *OOBGPUExporter {
-    cmd := exec.Command("go", "run", ".", "-config", configPath)
-    
-    cmd.SysProcAttr = &syscall.SysProcAttr{
-        Setpgid: true,
-    }
+	cmd := exec.Command("go", "run", ".", "-config", configPath)
 
-    cmd.Stdout = os.Stdout
-    cmd.Stderr = os.Stderr
+	cmd.SysProcAttr = &syscall.SysProcAttr{
+		Setpgid: true,
+	}
 
-    if err := cmd.Start(); err != nil {
-        panic(fmt.Sprintf("Failed to start command: %v\n", err))
-    }
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
 
-    waitFor("http://localhost:9347/health", 10 )
+	if err := cmd.Start(); err != nil {
+		panic(fmt.Sprintf("Failed to start command: %v\n", err))
+	}
 
-    return &OOBGPUExporter{
-		t:  t,
+	waitFor("http://localhost:9347/health", 10)
+
+	return &OOBGPUExporter{
+		t:   t,
 		cmd: cmd,
 	}
 }
@@ -140,9 +152,9 @@ func waitFor(endpoint string, secs int) bool {
 		if err == nil && resp.StatusCode == http.StatusOK {
 			fmt.Println("HTTP server is up and running!")
 			err = resp.Body.Close()
-            if err != nil {
-                fmt.Printf("Error closing response body for health check: %v", err)
-            }
+			if err != nil {
+				fmt.Printf("Error closing response body for health check: %v", err)
+			}
 			return true
 		}
 		fmt.Printf("Waiting for server to start... (attempt %d)", i+1)
@@ -152,13 +164,13 @@ func waitFor(endpoint string, secs int) bool {
 }
 
 func (oobGPUExporter *OOBGPUExporter) Stop() {
-    err := syscall.Kill(-oobGPUExporter.cmd.Process.Pid, syscall.SIGINT)
-    if err != nil {
-        oobGPUExporter.t.Fatalf("Failed to kill process: %v", err)
-        return  // Do not try to wait on a process we failed to kill
-    }
-    //nolint:errcheck // we just killed it, we don't care about the error
-    oobGPUExporter.cmd.Wait()
+	err := syscall.Kill(-oobGPUExporter.cmd.Process.Pid, syscall.SIGINT)
+	if err != nil {
+		oobGPUExporter.t.Fatalf("Failed to kill process: %v", err)
+		return // Do not try to wait on a process we failed to kill
+	}
+	//nolint:errcheck // we just killed it, we don't care about the error
+	oobGPUExporter.cmd.Wait()
 }
 
 // Convenience functions
@@ -193,7 +205,7 @@ func readTestFile(path ...string) (string, error) {
 	}
 	expectedContent := string(expectedBytes)
 
-    return expectedContent, nil
+	return expectedContent, nil
 
 }
 
@@ -213,10 +225,9 @@ func get(url string) (string, error) {
 		return "", err
 	}
 	err = resp.Body.Close()
-    if err != nil {
-        fmt.Printf("Error closing response body for URL %s: %v", url, err)
-    }
+	if err != nil {
+		fmt.Printf("Error closing response body for URL %s: %v", url, err)
+	}
 
-    return string(bodyBytes), nil
+	return string(bodyBytes), nil
 }
-
