@@ -23,8 +23,8 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@0aaccfd150d50ccaeb58ebd88d36e91967a5f35b # v5.4.0
         with:
-          go-version: 1.24.x
+          go-version: 1.26.x
       - name: Check Vulnerabilities
         uses: golang/govulncheck-action@v1
         with:
-          go-version-input: 1.24.x 
+          go-version-input: 1.26.x
