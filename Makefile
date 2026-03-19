@@ -7,8 +7,13 @@ LDFLAGS    += -X $(REPOSITORY)/internal/version.Revision=$(REVISION)
 GOFLAGS    := -ldflags "$(LDFLAGS)"
 RUNFLAGS   ?= -config config.yml -verbose
 
-build:
-	go build $(GOFLAGS) -o oob_gpu_exporter ./cmd/oob_gpu_exporter
+build: build-linux-amd64 build-linux-arm64
+
+build-linux-amd64:
+	GOOS=linux GOARCH=amd64 go build $(GOFLAGS) -o oob_gpu_exporter-linux-amd64 ./cmd/oob_gpu_exporter
+
+build-linux-arm64:
+	GOOS=linux GOARCH=arm64 go build $(GOFLAGS) -o oob_gpu_exporter-linux-arm64 ./cmd/oob_gpu_exporter
 
 run:
 	go run ./cmd/oob_gpu_exporter $(RUNFLAGS)
