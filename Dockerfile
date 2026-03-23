@@ -1,5 +1,5 @@
 ARG ARCH=
-FROM ${ARCH}golang:1.24-alpine3.20 AS builder
+FROM ${ARCH}golang:1.26-alpine3.22 AS builder
 
 WORKDIR /app/src
 RUN apk add -U make git grep

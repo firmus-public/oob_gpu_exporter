@@ -17,6 +17,8 @@ cd oob_gpu_exporter
 make
 ```
 
+Multiple binaries will be built for various CPU architectures; ensure you select the correct one to match your deployment platform.
+
 ### Docker
 There is a `Dockerfile` in the repository for building a container image. To build it locally use:
 
