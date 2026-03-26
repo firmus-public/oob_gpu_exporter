@@ -31,32 +31,84 @@ type Collector struct {
 	ExporterScrapeErrorsTotal *prometheus.Desc
 
 	// GPUs
-	GPUCount                        *prometheus.Desc
-	GPUInfo                         *prometheus.Desc
-	GPUState                        *prometheus.Desc
-	GPUHealth                       *prometheus.Desc
-	GPUBoardPowerSupplyStatus       *prometheus.Desc
-	GPUMemoryTemperatureCelsius     *prometheus.Desc
-	GPUPowerBrakeStatus             *prometheus.Desc
-	GPUPrimaryGPUTemperatureCelsius *prometheus.Desc
-	GPUThermalAlertStatus           *prometheus.Desc
-	GPUBandwidthPercent             *prometheus.Desc
-	GPUConsumedPowerWatt            *prometheus.Desc
-	GPUOperatingSpeedMHz            *prometheus.Desc
-	GPUMemoryBandwidthPercent       *prometheus.Desc
-	GPUMemoryOperatingSpeedMHz      *prometheus.Desc
-	GPUThrottleReason               *prometheus.Desc
-	GPUSMUtilizationPercent         *prometheus.Desc
-	GPUSMActivityPercent            *prometheus.Desc
-	GPUSMOccupancyPercent           *prometheus.Desc
-	GPUTensorCoreActivityPercent    *prometheus.Desc
-	GPUHMMAUtilizationPercent       *prometheus.Desc
-	GPUPCIeRawTxBandwidthGbps       *prometheus.Desc
-	GPUPCIeRawRxBandwidthGbps       *prometheus.Desc
-	GPUCurrentPCIeLinkSpeed         *prometheus.Desc
-	GPUMaxSupportedPCIeLinkSpeed    *prometheus.Desc
-	GPUDRAMUtilizationPercent       *prometheus.Desc
-	GPUPCIeCorrectableErrorCount    *prometheus.Desc
+	GPUCount                             *prometheus.Desc
+	GPUInfo                              *prometheus.Desc
+	GPUState                             *prometheus.Desc
+	GPUHealth                            *prometheus.Desc
+	GPUBoardPowerSupplyStatus            *prometheus.Desc
+	GPUMemoryTemperatureCelsius          *prometheus.Desc
+	GPUPowerBrakeStatus                  *prometheus.Desc
+	GPUPrimaryGPUTemperatureCelsius      *prometheus.Desc
+	GPUThermalAlertStatus                *prometheus.Desc
+	GPUBandwidthPercent                  *prometheus.Desc
+	GPUConsumedPowerWatt                 *prometheus.Desc
+	GPUOperatingSpeedMHz                 *prometheus.Desc
+	GPUMemoryBandwidthPercent            *prometheus.Desc
+	GPUMemoryOperatingSpeedMHz           *prometheus.Desc
+	GPUThrottleReason                    *prometheus.Desc
+	GPUSMUtilizationPercent              *prometheus.Desc
+	GPUSMActivityPercent                 *prometheus.Desc
+	GPUSMOccupancyPercent                *prometheus.Desc
+	GPUTensorCoreActivityPercent         *prometheus.Desc
+	GPUHMMAUtilizationPercent            *prometheus.Desc
+	GPUPCIeRawTxBandwidthGbps            *prometheus.Desc
+	GPUPCIeRawRxBandwidthGbps            *prometheus.Desc
+	GPUCurrentPCIeLinkSpeed              *prometheus.Desc
+	GPUMaxSupportedPCIeLinkSpeed         *prometheus.Desc
+	GPUDRAMUtilizationPercent            *prometheus.Desc
+	GPUPCIeCorrectableErrorCount         *prometheus.Desc
+	GPUPowerLimitWatts                   *prometheus.Desc
+	GPUCoreVoltageVolts                  *prometheus.Desc
+	GPUMemoryCorrectableECCErrorCount    *prometheus.Desc
+	GPUMemoryUncorrectableECCErrorCount  *prometheus.Desc
+	GPUFP16ActivityPercent               *prometheus.Desc
+	GPUFP32ActivityPercent               *prometheus.Desc
+	GPUFP64ActivityPercent               *prometheus.Desc
+	GPUIntegerActivityUtilizationPercent *prometheus.Desc
+	GPUNVLinkDataRxBandwidthGbps         *prometheus.Desc
+	GPUNVLinkDataTxBandwidthGbps         *prometheus.Desc
+	GPUTotalNVLinks                      *prometheus.Desc
+	GPUEnergyJoules                      *prometheus.Desc
+	GPUCacheCorrectableECCErrorCount     *prometheus.Desc
+	GPUCacheUncorrectableECCErrorCount   *prometheus.Desc
+	GPUNVDecUtilizationPercent           *prometheus.Desc
+	GPUNVJpgUtilizationPercent           *prometheus.Desc
+	GPUNVLinkGpuRawRxBandwidthGbps       *prometheus.Desc
+	GPUNVLinkGpuRawTxBandwidthGbps       *prometheus.Desc
+
+	// Reset Metrics
+	GPUConventionalResetEntryCount *prometheus.Desc
+	GPUConventionalResetExitCount  *prometheus.Desc
+	GPUFundamentalResetEntryCount  *prometheus.Desc
+	GPUFundamentalResetExitCount   *prometheus.Desc
+	GPUPFFLRResetEntryCount        *prometheus.Desc
+	GPUPFFLRResetExitCount         *prometheus.Desc
+
+	// Power Smoothing
+	GPUPowerSmoothingSupported                         *prometheus.Desc
+	GPUPowerSmoothingEnabled                           *prometheus.Desc
+	GPUPowerSmoothingImmediateRampDown                 *prometheus.Desc
+	GPUPowerSmoothingMaxAllowedTMPFloorPercent         *prometheus.Desc
+	GPUPowerSmoothingMinAllowedTMPFloorPercent         *prometheus.Desc
+	GPUPowerSmoothingRampDownHysteresisSeconds         *prometheus.Desc
+	GPUPowerSmoothingRampDownWattsPerSecond            *prometheus.Desc
+	GPUPowerSmoothingRampUpWattsPerSecond              *prometheus.Desc
+	GPUPowerSmoothingRemainingLifetimeCircuitryPercent *prometheus.Desc
+	GPUPowerSmoothingTMPFloorPercent                   *prometheus.Desc
+	GPUPowerSmoothingTMPFloorWatts                     *prometheus.Desc
+	GPUPowerSmoothingTMPWatts                          *prometheus.Desc
+
+	// NVLink Port Metrics
+	GPUNVLinkStatus           *prometheus.Desc
+	GPUNVLinkCurrentSpeedGbps *prometheus.Desc
+	GPUNVLinkRXBytes          *prometheus.Desc
+	GPUNVLinkTXBytes          *prometheus.Desc
+	GPUNVLinkBitErrorRate     *prometheus.Desc
+	GPUNVLinkLinkDownedCount  *prometheus.Desc
+	GPUNVLinkSymbolErrors     *prometheus.Desc
+	GPUNVLinkRecoveryCount    *prometheus.Desc
+	GPUNVLinkRuntimeError     *prometheus.Desc
+	GPUNVLinkTrainingError    *prometheus.Desc
 }
 
 func NewCollector() *Collector {
@@ -77,7 +129,7 @@ func NewCollector() *Collector {
 			"Total number of errors encountered while scraping target",
 			nil, nil,
 		),
-        GPUCount: prometheus.NewDesc(
+		GPUCount: prometheus.NewDesc(
 			prometheus.BuildFQName(prefix, "gpu", "num_gpus"),
 			"The number of GPUs detected",
 			nil, nil,
@@ -207,6 +259,242 @@ func NewCollector() *Collector {
 			"Number of correctable PCIe errors of the GPU",
 			[]string{"id"}, nil,
 		),
+		GPUPowerLimitWatts: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "power_limit_watt"),
+			"Power limit of the GPU in watts",
+			[]string{"id"}, nil,
+		),
+		GPUCoreVoltageVolts: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "core_voltage_volts"),
+			"Core voltage of the GPU in volts",
+			[]string{"id"}, nil,
+		),
+		GPUMemoryCorrectableECCErrorCount: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "memory_correctable_ecc_error_count"),
+			"Number of correctable memory ECC errors of the GPU",
+			[]string{"id"}, nil,
+		),
+		GPUMemoryUncorrectableECCErrorCount: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "memory_uncorrectable_ecc_error_count"),
+			"Number of uncorrectable memory ECC errors of the GPU",
+			[]string{"id"}, nil,
+		),
+		GPUFP16ActivityPercent: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "fp16_activity_percent"),
+			"FP16 activity of the GPU in percent",
+			[]string{"id"}, nil,
+		),
+		GPUFP32ActivityPercent: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "fp32_activity_percent"),
+			"FP32 activity of the GPU in percent",
+			[]string{"id"}, nil,
+		),
+		GPUFP64ActivityPercent: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "fp64_activity_percent"),
+			"FP64 activity of the GPU in percent",
+			[]string{"id"}, nil,
+		),
+		GPUIntegerActivityUtilizationPercent: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "integer_activity_utilization_percent"),
+			"Integer activity utilization of the GPU in percent",
+			[]string{"id"}, nil,
+		),
+		GPUNVLinkDataRxBandwidthGbps: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "nvlink_data_rx_bandwidth_gbps"),
+			"NVLink data receive bandwidth of the GPU in Gbps",
+			[]string{"id"}, nil,
+		),
+		GPUNVLinkDataTxBandwidthGbps: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "nvlink_data_tx_bandwidth_gbps"),
+			"NVLink data transmit bandwidth of the GPU in Gbps",
+			[]string{"id"}, nil,
+		),
+		GPUTotalNVLinks: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "total_nvlinks"),
+			"Total number of NVLinks on the GPU",
+			[]string{"id"}, nil,
+		),
+		GPUEnergyJoules: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "energy_joules"),
+			"Total energy consumed by the GPU in joules",
+			[]string{"id"}, nil,
+		),
+		GPUCacheCorrectableECCErrorCount: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "cache_correctable_ecc_error_count"),
+			"Number of correctable cache ECC errors of the GPU",
+			[]string{"id"}, nil,
+		),
+		GPUCacheUncorrectableECCErrorCount: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "cache_uncorrectable_ecc_error_count"),
+			"Number of uncorrectable cache ECC errors of the GPU",
+			[]string{"id"}, nil,
+		),
+		GPUNVDecUtilizationPercent: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "nvdec_utilization_percent"),
+			"NVDEC video decoder utilization of the GPU in percent",
+			[]string{"id"}, nil,
+		),
+		GPUNVJpgUtilizationPercent: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "nvjpg_utilization_percent"),
+			"NVJPG JPEG decoder utilization of the GPU in percent",
+			[]string{"id"}, nil,
+		),
+		GPUNVLinkGpuRawRxBandwidthGbps: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "nvlink_gpu_raw_rx_bandwidth_gbps"),
+			"NVLink raw receive bandwidth of the GPU in Gbps (aggregate)",
+			[]string{"id"}, nil,
+		),
+		GPUNVLinkGpuRawTxBandwidthGbps: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "nvlink_gpu_raw_tx_bandwidth_gbps"),
+			"NVLink raw transmit bandwidth of the GPU in Gbps (aggregate)",
+			[]string{"id"}, nil,
+		),
+
+		// Reset Metrics
+		GPUConventionalResetEntryCount: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "conventional_reset_entry_count"),
+			"Number of conventional reset entries on the GPU",
+			[]string{"id"}, nil,
+		),
+		GPUConventionalResetExitCount: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "conventional_reset_exit_count"),
+			"Number of conventional reset exits on the GPU",
+			[]string{"id"}, nil,
+		),
+		GPUFundamentalResetEntryCount: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "fundamental_reset_entry_count"),
+			"Number of fundamental reset entries on the GPU",
+			[]string{"id"}, nil,
+		),
+		GPUFundamentalResetExitCount: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "fundamental_reset_exit_count"),
+			"Number of fundamental reset exits on the GPU",
+			[]string{"id"}, nil,
+		),
+		GPUPFFLRResetEntryCount: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "pf_flr_reset_entry_count"),
+			"Number of PF FLR reset entries on the GPU",
+			[]string{"id"}, nil,
+		),
+		GPUPFFLRResetExitCount: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "pf_flr_reset_exit_count"),
+			"Number of PF FLR reset exits on the GPU",
+			[]string{"id"}, nil,
+		),
+
+		// Power Smoothing
+		GPUPowerSmoothingSupported: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "power_smoothing_supported"),
+			"Indicates if logic power smoothing is supported on the GPU",
+			[]string{"id"}, nil,
+		),
+		GPUPowerSmoothingEnabled: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "power_smoothing_enabled"),
+			"Indicates if power smoothing is enabled on the GPU",
+			[]string{"id"}, nil,
+		),
+		GPUPowerSmoothingImmediateRampDown: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "power_smoothing_immediate_ramp_down"),
+			"Indicates if immediate ramp down is enabled on the GPU",
+			[]string{"id"}, nil,
+		),
+		GPUPowerSmoothingMaxAllowedTMPFloorPercent: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "power_smoothing_max_allowed_tmp_floor_percent"),
+			"Maximum allowed TMP floor percentage for power smoothing",
+			[]string{"id"}, nil,
+		),
+		GPUPowerSmoothingMinAllowedTMPFloorPercent: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "power_smoothing_min_allowed_tmp_floor_percent"),
+			"Minimum allowed TMP floor percentage for power smoothing",
+			[]string{"id"}, nil,
+		),
+		GPUPowerSmoothingRampDownHysteresisSeconds: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "power_smoothing_ramp_down_hysteresis_seconds"),
+			"Ramp down hysteresis in seconds for power smoothing",
+			[]string{"id"}, nil,
+		),
+		GPUPowerSmoothingRampDownWattsPerSecond: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "power_smoothing_ramp_down_watts_per_second"),
+			"Ramp down rate in watts per second for power smoothing",
+			[]string{"id"}, nil,
+		),
+		GPUPowerSmoothingRampUpWattsPerSecond: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "power_smoothing_ramp_up_watts_per_second"),
+			"Ramp up rate in watts per second for power smoothing",
+			[]string{"id"}, nil,
+		),
+		GPUPowerSmoothingRemainingLifetimeCircuitryPercent: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "power_smoothing_remaining_lifetime_circuitry_percent"),
+			"Remaining lifetime of the power smoothing circuitry in percent",
+			[]string{"id"}, nil,
+		),
+		GPUPowerSmoothingTMPFloorPercent: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "power_smoothing_tmp_floor_percent"),
+			"Current TMP floor percentage for power smoothing",
+			[]string{"id"}, nil,
+		),
+		GPUPowerSmoothingTMPFloorWatts: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "power_smoothing_tmp_floor_watts"),
+			"Current TMP floor in watts for power smoothing",
+			[]string{"id"}, nil,
+		),
+		GPUPowerSmoothingTMPWatts: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "power_smoothing_tmp_watts"),
+			"Current TMP in watts for power smoothing",
+			[]string{"id"}, nil,
+		),
+
+		// NVLink Port Metrics
+		GPUNVLinkStatus: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "nvlink_status"),
+			"Status of the NVLink port (1=Up, 0=Down)",
+			[]string{"id", "port"}, nil,
+		),
+		GPUNVLinkCurrentSpeedGbps: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "nvlink_current_speed_gbps"),
+			"Current speed of the NVLink port in Gbps",
+			[]string{"id", "port"}, nil,
+		),
+		GPUNVLinkRXBytes: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "nvlink_rx_bytes"),
+			"Bytes received on the NVLink port",
+			[]string{"id", "port"}, nil,
+		),
+		GPUNVLinkTXBytes: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "nvlink_tx_bytes"),
+			"Bytes transmitted on the NVLink port",
+			[]string{"id", "port"}, nil,
+		),
+		GPUNVLinkBitErrorRate: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "nvlink_bit_error_rate"),
+			"Bit error rate of the NVLink port",
+			[]string{"id", "port"}, nil,
+		),
+		GPUNVLinkLinkDownedCount: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "nvlink_link_downed_count"),
+			"Number of times the NVLink port has gone down",
+			[]string{"id", "port"}, nil,
+		),
+		GPUNVLinkSymbolErrors: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "nvlink_symbol_errors"),
+			"Symbol errors on the NVLink port",
+			[]string{"id", "port"}, nil,
+		),
+		GPUNVLinkRecoveryCount: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "nvlink_recovery_count"),
+			"Link error recovery count on the NVLink port",
+			[]string{"id", "port"}, nil,
+		),
+		GPUNVLinkRuntimeError: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "nvlink_runtime_error"),
+			"NVLink runtime error on the port (1=error, 0=no error)",
+			[]string{"id", "port"}, nil,
+		),
+		GPUNVLinkTrainingError: prometheus.NewDesc(
+			prometheus.BuildFQName(prefix, "gpu", "nvlink_training_error"),
+			"NVLink training error on the port (1=error, 0=no error)",
+			[]string{"id", "port"}, nil,
+		),
 	}
 
 	collector.builder = new(strings.Builder)
@@ -246,6 +534,53 @@ func (collector *Collector) Describe(ch chan<- *prometheus.Desc) {
 	ch <- collector.GPUMaxSupportedPCIeLinkSpeed
 	ch <- collector.GPUDRAMUtilizationPercent
 	ch <- collector.GPUPCIeCorrectableErrorCount
+	ch <- collector.GPUPowerLimitWatts
+	ch <- collector.GPUCoreVoltageVolts
+	ch <- collector.GPUMemoryCorrectableECCErrorCount
+	ch <- collector.GPUMemoryUncorrectableECCErrorCount
+	ch <- collector.GPUFP16ActivityPercent
+	ch <- collector.GPUFP32ActivityPercent
+	ch <- collector.GPUFP64ActivityPercent
+	ch <- collector.GPUIntegerActivityUtilizationPercent
+	ch <- collector.GPUNVLinkDataRxBandwidthGbps
+	ch <- collector.GPUNVLinkDataTxBandwidthGbps
+	ch <- collector.GPUTotalNVLinks
+	ch <- collector.GPUEnergyJoules
+	ch <- collector.GPUCacheCorrectableECCErrorCount
+	ch <- collector.GPUCacheUncorrectableECCErrorCount
+	ch <- collector.GPUNVDecUtilizationPercent
+	ch <- collector.GPUNVJpgUtilizationPercent
+	ch <- collector.GPUNVLinkGpuRawRxBandwidthGbps
+	ch <- collector.GPUNVLinkGpuRawTxBandwidthGbps
+	ch <- collector.GPUConventionalResetEntryCount
+	ch <- collector.GPUConventionalResetExitCount
+	ch <- collector.GPUFundamentalResetEntryCount
+	ch <- collector.GPUFundamentalResetExitCount
+	ch <- collector.GPUPFFLRResetEntryCount
+	ch <- collector.GPUPFFLRResetExitCount
+	ch <- collector.GPUPowerSmoothingSupported
+	ch <- collector.GPUPowerSmoothingEnabled
+	ch <- collector.GPUPowerSmoothingImmediateRampDown
+	ch <- collector.GPUPowerSmoothingMaxAllowedTMPFloorPercent
+	ch <- collector.GPUPowerSmoothingMinAllowedTMPFloorPercent
+	ch <- collector.GPUPowerSmoothingRampDownHysteresisSeconds
+	ch <- collector.GPUPowerSmoothingRampDownWattsPerSecond
+	ch <- collector.GPUPowerSmoothingRampUpWattsPerSecond
+	ch <- collector.GPUPowerSmoothingRemainingLifetimeCircuitryPercent
+	ch <- collector.GPUPowerSmoothingTMPFloorPercent
+	ch <- collector.GPUPowerSmoothingTMPFloorWatts
+	ch <- collector.GPUPowerSmoothingTMPWatts
+
+	ch <- collector.GPUNVLinkStatus
+	ch <- collector.GPUNVLinkCurrentSpeedGbps
+	ch <- collector.GPUNVLinkRXBytes
+	ch <- collector.GPUNVLinkTXBytes
+	ch <- collector.GPUNVLinkBitErrorRate
+	ch <- collector.GPUNVLinkLinkDownedCount
+	ch <- collector.GPUNVLinkSymbolErrors
+	ch <- collector.GPUNVLinkRecoveryCount
+	ch <- collector.GPUNVLinkRuntimeError
+	ch <- collector.GPUNVLinkTrainingError
 }
 
 func (collector *Collector) Collect(ch chan<- prometheus.Metric) {

@@ -1,0 +1,1073 @@
+# HELP oob_gpu_bandwidth_percent Utilization of the GPU in percent
+# TYPE oob_gpu_bandwidth_percent gauge
+oob_gpu_bandwidth_percent{id="GPU_0"} 0
+oob_gpu_bandwidth_percent{id="GPU_1"} 0
+oob_gpu_bandwidth_percent{id="GPU_2"} 0
+oob_gpu_bandwidth_percent{id="GPU_3"} 0
+# HELP oob_gpu_cache_correctable_ecc_error_count Number of correctable cache ECC errors of the GPU
+# TYPE oob_gpu_cache_correctable_ecc_error_count counter
+oob_gpu_cache_correctable_ecc_error_count{id="GPU_0"} 0
+oob_gpu_cache_correctable_ecc_error_count{id="GPU_1"} 0
+oob_gpu_cache_correctable_ecc_error_count{id="GPU_2"} 0
+oob_gpu_cache_correctable_ecc_error_count{id="GPU_3"} 0
+# HELP oob_gpu_cache_uncorrectable_ecc_error_count Number of uncorrectable cache ECC errors of the GPU
+# TYPE oob_gpu_cache_uncorrectable_ecc_error_count counter
+oob_gpu_cache_uncorrectable_ecc_error_count{id="GPU_0"} 0
+oob_gpu_cache_uncorrectable_ecc_error_count{id="GPU_1"} 0
+oob_gpu_cache_uncorrectable_ecc_error_count{id="GPU_2"} 0
+oob_gpu_cache_uncorrectable_ecc_error_count{id="GPU_3"} 0
+# HELP oob_gpu_consumed_power_watt Power consumed by the GPU in watts
+# TYPE oob_gpu_consumed_power_watt gauge
+oob_gpu_consumed_power_watt{id="GPU_0"} 176.486
+oob_gpu_consumed_power_watt{id="GPU_1"} 180.525
+oob_gpu_consumed_power_watt{id="GPU_2"} 176.486
+oob_gpu_consumed_power_watt{id="GPU_3"} 176.255
+# HELP oob_gpu_conventional_reset_entry_count Number of conventional reset entries on the GPU
+# TYPE oob_gpu_conventional_reset_entry_count counter
+oob_gpu_conventional_reset_entry_count{id="GPU_0"} 1
+oob_gpu_conventional_reset_entry_count{id="GPU_1"} 1
+oob_gpu_conventional_reset_entry_count{id="GPU_2"} 1
+oob_gpu_conventional_reset_entry_count{id="GPU_3"} 1
+# HELP oob_gpu_conventional_reset_exit_count Number of conventional reset exits on the GPU
+# TYPE oob_gpu_conventional_reset_exit_count counter
+oob_gpu_conventional_reset_exit_count{id="GPU_0"} 0
+oob_gpu_conventional_reset_exit_count{id="GPU_1"} 0
+oob_gpu_conventional_reset_exit_count{id="GPU_2"} 0
+oob_gpu_conventional_reset_exit_count{id="GPU_3"} 0
+# HELP oob_gpu_core_voltage_volts Core voltage of the GPU in volts
+# TYPE oob_gpu_core_voltage_volts gauge
+oob_gpu_core_voltage_volts{id="GPU_0"} 0.72
+oob_gpu_core_voltage_volts{id="GPU_1"} 0.705
+oob_gpu_core_voltage_volts{id="GPU_2"} 0.71
+oob_gpu_core_voltage_volts{id="GPU_3"} 0.705
+# HELP oob_gpu_energy_joules Total energy consumed by the GPU in joules
+# TYPE oob_gpu_energy_joules counter
+oob_gpu_energy_joules{id="GPU_0"} 4.470991999e+06
+oob_gpu_energy_joules{id="GPU_1"} 4.569377831e+06
+oob_gpu_energy_joules{id="GPU_2"} 4.475518151e+06
+oob_gpu_energy_joules{id="GPU_3"} 4.465136298e+06
+# HELP oob_gpu_exporter_build_info Constant metric with build information for the exporter
+# TYPE oob_gpu_exporter_build_info untyped
+oob_gpu_exporter_build_info{goversion="go1.24.9",revision="",version=""} 1
+# HELP oob_gpu_exporter_scrape_errors_total Total number of errors encountered while scraping target
+# TYPE oob_gpu_exporter_scrape_errors_total counter
+oob_gpu_exporter_scrape_errors_total 0
+# HELP oob_gpu_fp16_activity_percent FP16 activity of the GPU in percent
+# TYPE oob_gpu_fp16_activity_percent gauge
+oob_gpu_fp16_activity_percent{id="GPU_0"} 0
+oob_gpu_fp16_activity_percent{id="GPU_1"} 0
+oob_gpu_fp16_activity_percent{id="GPU_2"} 0
+oob_gpu_fp16_activity_percent{id="GPU_3"} 0
+# HELP oob_gpu_fp32_activity_percent FP32 activity of the GPU in percent
+# TYPE oob_gpu_fp32_activity_percent gauge
+oob_gpu_fp32_activity_percent{id="GPU_0"} 0
+oob_gpu_fp32_activity_percent{id="GPU_1"} 0
+oob_gpu_fp32_activity_percent{id="GPU_2"} 0
+oob_gpu_fp32_activity_percent{id="GPU_3"} 0
+# HELP oob_gpu_fp64_activity_percent FP64 activity of the GPU in percent
+# TYPE oob_gpu_fp64_activity_percent gauge
+oob_gpu_fp64_activity_percent{id="GPU_0"} 0
+oob_gpu_fp64_activity_percent{id="GPU_1"} 0
+oob_gpu_fp64_activity_percent{id="GPU_2"} 0
+oob_gpu_fp64_activity_percent{id="GPU_3"} 0
+# HELP oob_gpu_fundamental_reset_entry_count Number of fundamental reset entries on the GPU
+# TYPE oob_gpu_fundamental_reset_entry_count counter
+oob_gpu_fundamental_reset_entry_count{id="GPU_0"} 1
+oob_gpu_fundamental_reset_entry_count{id="GPU_1"} 1
+oob_gpu_fundamental_reset_entry_count{id="GPU_2"} 1
+oob_gpu_fundamental_reset_entry_count{id="GPU_3"} 1
+# HELP oob_gpu_fundamental_reset_exit_count Number of fundamental reset exits on the GPU
+# TYPE oob_gpu_fundamental_reset_exit_count counter
+oob_gpu_fundamental_reset_exit_count{id="GPU_0"} 1
+oob_gpu_fundamental_reset_exit_count{id="GPU_1"} 1
+oob_gpu_fundamental_reset_exit_count{id="GPU_2"} 1
+oob_gpu_fundamental_reset_exit_count{id="GPU_3"} 1
+# HELP oob_gpu_health Health status of the GPU
+# TYPE oob_gpu_health gauge
+oob_gpu_health{id="GPU_0",status="OK"} 2
+oob_gpu_health{id="GPU_1",status="OK"} 2
+oob_gpu_health{id="GPU_2",status="OK"} 2
+oob_gpu_health{id="GPU_3",status="OK"} 2
+# HELP oob_gpu_hmma_utilization_percent HMMA (Hybrid Matrix Multiply-Accumulate) utilization of the GPU in percent
+# TYPE oob_gpu_hmma_utilization_percent gauge
+oob_gpu_hmma_utilization_percent{id="GPU_0"} 0
+oob_gpu_hmma_utilization_percent{id="GPU_1"} 0
+oob_gpu_hmma_utilization_percent{id="GPU_2"} 0
+oob_gpu_hmma_utilization_percent{id="GPU_3"} 0
+# HELP oob_gpu_info Information about the GPU
+# TYPE oob_gpu_info untyped
+oob_gpu_info{guid="",id="GPU_0",manufacturer="NVIDIA",model="NVIDIA GB300",part_number="31C2-893-A1",serial_number="1653625056400",slot="0"} 1
+oob_gpu_info{guid="",id="GPU_1",manufacturer="NVIDIA",model="NVIDIA GB300",part_number="31C2-893-A1",serial_number="1653625056400",slot="0"} 1
+oob_gpu_info{guid="",id="GPU_2",manufacturer="NVIDIA",model="NVIDIA GB300",part_number="31C2-893-A1",serial_number="1653625055476",slot="0"} 1
+oob_gpu_info{guid="",id="GPU_3",manufacturer="NVIDIA",model="NVIDIA GB300",part_number="31C2-893-A1",serial_number="1653625055476",slot="0"} 1
+# HELP oob_gpu_integer_activity_utilization_percent Integer activity utilization of the GPU in percent
+# TYPE oob_gpu_integer_activity_utilization_percent gauge
+oob_gpu_integer_activity_utilization_percent{id="GPU_0"} 0
+oob_gpu_integer_activity_utilization_percent{id="GPU_1"} 0
+oob_gpu_integer_activity_utilization_percent{id="GPU_2"} 0
+oob_gpu_integer_activity_utilization_percent{id="GPU_3"} 0
+# HELP oob_gpu_memory_bandwidth_percent Utilization of the GPU memory in percent
+# TYPE oob_gpu_memory_bandwidth_percent gauge
+oob_gpu_memory_bandwidth_percent{id="GPU_0"} 0
+oob_gpu_memory_bandwidth_percent{id="GPU_1"} 0
+oob_gpu_memory_bandwidth_percent{id="GPU_2"} 0
+oob_gpu_memory_bandwidth_percent{id="GPU_3"} 0
+# HELP oob_gpu_memory_correctable_ecc_error_count Number of correctable memory ECC errors of the GPU
+# TYPE oob_gpu_memory_correctable_ecc_error_count counter
+oob_gpu_memory_correctable_ecc_error_count{id="GPU_0"} 0
+oob_gpu_memory_correctable_ecc_error_count{id="GPU_1"} 0
+oob_gpu_memory_correctable_ecc_error_count{id="GPU_2"} 0
+oob_gpu_memory_correctable_ecc_error_count{id="GPU_3"} 0
+# HELP oob_gpu_memory_operating_speed_mhz Operating speed of the GPU memory in Mhz
+# TYPE oob_gpu_memory_operating_speed_mhz gauge
+oob_gpu_memory_operating_speed_mhz{id="GPU_0"} 3996
+oob_gpu_memory_operating_speed_mhz{id="GPU_1"} 3996
+oob_gpu_memory_operating_speed_mhz{id="GPU_2"} 3996
+oob_gpu_memory_operating_speed_mhz{id="GPU_3"} 3996
+# HELP oob_gpu_memory_uncorrectable_ecc_error_count Number of uncorrectable memory ECC errors of the GPU
+# TYPE oob_gpu_memory_uncorrectable_ecc_error_count counter
+oob_gpu_memory_uncorrectable_ecc_error_count{id="GPU_0"} 0
+oob_gpu_memory_uncorrectable_ecc_error_count{id="GPU_1"} 0
+oob_gpu_memory_uncorrectable_ecc_error_count{id="GPU_2"} 0
+oob_gpu_memory_uncorrectable_ecc_error_count{id="GPU_3"} 0
+# HELP oob_gpu_num_gpus The number of GPUs detected
+# TYPE oob_gpu_num_gpus counter
+oob_gpu_num_gpus 4
+# HELP oob_gpu_nvdec_utilization_percent NVDEC video decoder utilization of the GPU in percent
+# TYPE oob_gpu_nvdec_utilization_percent gauge
+oob_gpu_nvdec_utilization_percent{id="GPU_0"} 0
+oob_gpu_nvdec_utilization_percent{id="GPU_1"} 0
+oob_gpu_nvdec_utilization_percent{id="GPU_2"} 0
+oob_gpu_nvdec_utilization_percent{id="GPU_3"} 0
+# HELP oob_gpu_nvjpg_utilization_percent NVJPG JPEG decoder utilization of the GPU in percent
+# TYPE oob_gpu_nvjpg_utilization_percent gauge
+oob_gpu_nvjpg_utilization_percent{id="GPU_0"} 0
+oob_gpu_nvjpg_utilization_percent{id="GPU_1"} 0
+oob_gpu_nvjpg_utilization_percent{id="GPU_2"} 0
+oob_gpu_nvjpg_utilization_percent{id="GPU_3"} 0
+# HELP oob_gpu_nvlink_bit_error_rate Bit error rate of the NVLink port
+# TYPE oob_gpu_nvlink_bit_error_rate gauge
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_0"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_1"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_10"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_11"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_12"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_13"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_14"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_15"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_16"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_17"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_2"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_3"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_4"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_5"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_6"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_7"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_8"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_0",port="NVLink_9"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_0"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_1"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_10"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_11"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_12"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_13"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_14"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_15"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_16"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_17"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_2"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_3"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_4"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_5"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_6"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_7"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_8"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_1",port="NVLink_9"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_0"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_1"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_10"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_11"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_12"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_13"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_14"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_15"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_16"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_17"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_2"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_3"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_4"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_5"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_6"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_7"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_8"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_2",port="NVLink_9"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_0"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_1"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_10"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_11"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_12"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_13"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_14"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_15"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_16"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_17"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_2"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_3"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_4"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_5"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_6"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_7"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_8"} 1.5e-254
+oob_gpu_nvlink_bit_error_rate{id="GPU_3",port="NVLink_9"} 1.5e-254
+# HELP oob_gpu_nvlink_current_speed_gbps Current speed of the NVLink port in Gbps
+# TYPE oob_gpu_nvlink_current_speed_gbps gauge
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_0"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_1"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_10"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_11"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_12"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_13"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_14"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_15"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_16"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_17"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_2"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_3"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_4"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_5"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_6"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_7"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_8"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_0",port="NVLink_9"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_0"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_1"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_10"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_11"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_12"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_13"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_14"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_15"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_16"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_17"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_2"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_3"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_4"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_5"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_6"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_7"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_8"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_1",port="NVLink_9"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_0"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_1"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_10"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_11"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_12"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_13"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_14"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_15"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_16"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_17"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_2"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_3"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_4"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_5"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_6"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_7"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_8"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_2",port="NVLink_9"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_0"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_1"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_10"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_11"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_12"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_13"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_14"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_15"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_16"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_17"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_2"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_3"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_4"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_5"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_6"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_7"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_8"} 400
+oob_gpu_nvlink_current_speed_gbps{id="GPU_3",port="NVLink_9"} 400
+# HELP oob_gpu_nvlink_data_rx_bandwidth_gbps NVLink data receive bandwidth of the GPU in Gbps
+# TYPE oob_gpu_nvlink_data_rx_bandwidth_gbps gauge
+oob_gpu_nvlink_data_rx_bandwidth_gbps{id="GPU_0"} 0
+oob_gpu_nvlink_data_rx_bandwidth_gbps{id="GPU_1"} 0
+oob_gpu_nvlink_data_rx_bandwidth_gbps{id="GPU_2"} 0
+oob_gpu_nvlink_data_rx_bandwidth_gbps{id="GPU_3"} 0
+# HELP oob_gpu_nvlink_data_tx_bandwidth_gbps NVLink data transmit bandwidth of the GPU in Gbps
+# TYPE oob_gpu_nvlink_data_tx_bandwidth_gbps gauge
+oob_gpu_nvlink_data_tx_bandwidth_gbps{id="GPU_0"} 0
+oob_gpu_nvlink_data_tx_bandwidth_gbps{id="GPU_1"} 0
+oob_gpu_nvlink_data_tx_bandwidth_gbps{id="GPU_2"} 0
+oob_gpu_nvlink_data_tx_bandwidth_gbps{id="GPU_3"} 0
+# HELP oob_gpu_nvlink_gpu_raw_rx_bandwidth_gbps NVLink raw receive bandwidth of the GPU in Gbps (aggregate)
+# TYPE oob_gpu_nvlink_gpu_raw_rx_bandwidth_gbps gauge
+oob_gpu_nvlink_gpu_raw_rx_bandwidth_gbps{id="GPU_0"} 0
+oob_gpu_nvlink_gpu_raw_rx_bandwidth_gbps{id="GPU_1"} 0
+oob_gpu_nvlink_gpu_raw_rx_bandwidth_gbps{id="GPU_2"} 0
+oob_gpu_nvlink_gpu_raw_rx_bandwidth_gbps{id="GPU_3"} 0
+# HELP oob_gpu_nvlink_gpu_raw_tx_bandwidth_gbps NVLink raw transmit bandwidth of the GPU in Gbps (aggregate)
+# TYPE oob_gpu_nvlink_gpu_raw_tx_bandwidth_gbps gauge
+oob_gpu_nvlink_gpu_raw_tx_bandwidth_gbps{id="GPU_0"} 0
+oob_gpu_nvlink_gpu_raw_tx_bandwidth_gbps{id="GPU_1"} 0
+oob_gpu_nvlink_gpu_raw_tx_bandwidth_gbps{id="GPU_2"} 0
+oob_gpu_nvlink_gpu_raw_tx_bandwidth_gbps{id="GPU_3"} 0
+# HELP oob_gpu_nvlink_link_downed_count Number of times the NVLink port has gone down
+# TYPE oob_gpu_nvlink_link_downed_count counter
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_0"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_1"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_10"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_11"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_12"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_13"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_14"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_15"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_16"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_17"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_2"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_3"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_4"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_5"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_6"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_7"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_8"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_0",port="NVLink_9"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_0"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_1"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_10"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_11"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_12"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_13"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_14"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_15"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_16"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_17"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_2"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_3"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_4"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_5"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_6"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_7"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_8"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_1",port="NVLink_9"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_0"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_1"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_10"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_11"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_12"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_13"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_14"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_15"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_16"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_17"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_2"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_3"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_4"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_5"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_6"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_7"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_8"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_2",port="NVLink_9"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_0"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_1"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_10"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_11"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_12"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_13"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_14"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_15"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_16"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_17"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_2"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_3"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_4"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_5"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_6"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_7"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_8"} 0
+oob_gpu_nvlink_link_downed_count{id="GPU_3",port="NVLink_9"} 0
+# HELP oob_gpu_nvlink_recovery_count Link error recovery count on the NVLink port
+# TYPE oob_gpu_nvlink_recovery_count counter
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_0"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_1"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_10"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_11"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_12"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_13"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_14"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_15"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_16"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_17"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_2"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_3"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_4"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_5"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_6"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_7"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_8"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_0",port="NVLink_9"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_0"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_1"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_10"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_11"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_12"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_13"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_14"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_15"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_16"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_17"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_2"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_3"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_4"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_5"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_6"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_7"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_8"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_1",port="NVLink_9"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_0"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_1"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_10"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_11"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_12"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_13"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_14"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_15"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_16"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_17"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_2"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_3"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_4"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_5"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_6"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_7"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_8"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_2",port="NVLink_9"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_0"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_1"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_10"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_11"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_12"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_13"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_14"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_15"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_16"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_17"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_2"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_3"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_4"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_5"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_6"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_7"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_8"} 0
+oob_gpu_nvlink_recovery_count{id="GPU_3",port="NVLink_9"} 0
+# HELP oob_gpu_nvlink_runtime_error NVLink runtime error on the port (1=error, 0=no error)
+# TYPE oob_gpu_nvlink_runtime_error gauge
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_0"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_1"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_10"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_11"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_12"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_13"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_14"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_15"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_16"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_17"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_2"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_3"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_4"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_5"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_6"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_7"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_8"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_0",port="NVLink_9"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_0"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_1"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_10"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_11"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_12"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_13"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_14"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_15"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_16"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_17"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_2"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_3"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_4"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_5"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_6"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_7"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_8"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_1",port="NVLink_9"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_0"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_1"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_10"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_11"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_12"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_13"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_14"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_15"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_16"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_17"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_2"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_3"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_4"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_5"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_6"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_7"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_8"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_2",port="NVLink_9"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_0"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_1"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_10"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_11"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_12"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_13"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_14"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_15"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_16"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_17"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_2"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_3"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_4"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_5"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_6"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_7"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_8"} 0
+oob_gpu_nvlink_runtime_error{id="GPU_3",port="NVLink_9"} 0
+# HELP oob_gpu_nvlink_rx_bytes Bytes received on the NVLink port
+# TYPE oob_gpu_nvlink_rx_bytes counter
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_0"} 5.695488e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_1"} 2.782656e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_10"} 2.785824e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_11"} 2.784672e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_12"} 2.788704e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_13"} 2.79072e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_14"} 2.786976e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_15"} 2.788128e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_16"} 2.786112e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_17"} 2.782368e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_2"} 2.790144e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_3"} 2.784384e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_4"} 2.789856e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_5"} 2.784672e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_6"} 2.7864e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_7"} 2.78064e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_8"} 2.787264e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_0",port="NVLink_9"} 2.784384e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_0"} 5.697504e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_1"} 2.78208e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_10"} 2.78496e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_11"} 2.782944e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_12"} 2.786112e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_13"} 2.78928e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_14"} 2.784672e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_15"} 2.785536e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_16"} 2.78352e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_17"} 2.78064e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_2"} 2.785824e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_3"} 2.782944e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_4"} 2.789568e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_5"} 2.784384e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_6"} 2.78208e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_7"} 2.7792e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_8"} 2.787264e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_1",port="NVLink_9"} 2.78208e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_0"} 5.692608e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_1"} 2.779488e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_10"} 2.777472e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_11"} 2.784096e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_12"} 2.782368e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_13"} 2.78784e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_14"} 2.782656e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_15"} 2.78352e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_16"} 2.780928e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_17"} 2.7792e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_2"} 2.782368e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_3"} 2.786976e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_4"} 2.786112e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_5"} 2.78496e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_6"} 2.7792e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_7"} 2.779488e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_8"} 2.78208e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_2",port="NVLink_9"} 2.782944e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_0"} 5.696928e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_1"} 2.782944e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_10"} 2.78352e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_11"} 2.78352e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_12"} 2.786112e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_13"} 2.786976e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_14"} 2.785824e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_15"} 2.788128e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_16"} 2.784672e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_17"} 2.780064e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_2"} 2.785536e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_3"} 2.783808e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_4"} 2.78784e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_5"} 2.784096e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_6"} 2.783232e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_7"} 2.782368e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_8"} 2.784672e+06
+oob_gpu_nvlink_rx_bytes{id="GPU_3",port="NVLink_9"} 2.781792e+06
+# HELP oob_gpu_nvlink_status Status of the NVLink port (1=Up, 0=Down)
+# TYPE oob_gpu_nvlink_status gauge
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_0"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_1"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_10"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_11"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_12"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_13"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_14"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_15"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_16"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_17"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_2"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_3"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_4"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_5"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_6"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_7"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_8"} 1
+oob_gpu_nvlink_status{id="GPU_0",port="NVLink_9"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_0"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_1"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_10"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_11"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_12"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_13"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_14"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_15"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_16"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_17"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_2"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_3"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_4"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_5"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_6"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_7"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_8"} 1
+oob_gpu_nvlink_status{id="GPU_1",port="NVLink_9"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_0"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_1"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_10"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_11"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_12"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_13"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_14"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_15"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_16"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_17"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_2"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_3"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_4"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_5"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_6"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_7"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_8"} 1
+oob_gpu_nvlink_status{id="GPU_2",port="NVLink_9"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_0"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_1"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_10"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_11"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_12"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_13"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_14"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_15"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_16"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_17"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_2"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_3"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_4"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_5"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_6"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_7"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_8"} 1
+oob_gpu_nvlink_status{id="GPU_3",port="NVLink_9"} 1
+# HELP oob_gpu_nvlink_symbol_errors Symbol errors on the NVLink port
+# TYPE oob_gpu_nvlink_symbol_errors counter
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_0"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_1"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_10"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_11"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_12"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_13"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_14"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_15"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_16"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_17"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_2"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_3"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_4"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_5"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_6"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_7"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_8"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_0",port="NVLink_9"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_0"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_1"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_10"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_11"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_12"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_13"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_14"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_15"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_16"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_17"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_2"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_3"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_4"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_5"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_6"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_7"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_8"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_1",port="NVLink_9"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_0"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_1"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_10"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_11"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_12"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_13"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_14"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_15"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_16"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_17"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_2"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_3"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_4"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_5"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_6"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_7"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_8"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_2",port="NVLink_9"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_0"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_1"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_10"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_11"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_12"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_13"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_14"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_15"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_16"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_17"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_2"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_3"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_4"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_5"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_6"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_7"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_8"} 0
+oob_gpu_nvlink_symbol_errors{id="GPU_3",port="NVLink_9"} 0
+# HELP oob_gpu_nvlink_training_error NVLink training error on the port (1=error, 0=no error)
+# TYPE oob_gpu_nvlink_training_error gauge
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_0"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_1"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_10"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_11"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_12"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_13"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_14"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_15"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_16"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_17"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_2"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_3"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_4"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_5"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_6"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_7"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_8"} 0
+oob_gpu_nvlink_training_error{id="GPU_0",port="NVLink_9"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_0"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_1"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_10"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_11"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_12"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_13"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_14"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_15"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_16"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_17"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_2"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_3"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_4"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_5"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_6"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_7"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_8"} 0
+oob_gpu_nvlink_training_error{id="GPU_1",port="NVLink_9"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_0"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_1"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_10"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_11"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_12"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_13"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_14"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_15"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_16"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_17"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_2"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_3"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_4"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_5"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_6"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_7"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_8"} 0
+oob_gpu_nvlink_training_error{id="GPU_2",port="NVLink_9"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_0"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_1"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_10"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_11"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_12"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_13"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_14"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_15"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_16"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_17"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_2"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_3"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_4"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_5"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_6"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_7"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_8"} 0
+oob_gpu_nvlink_training_error{id="GPU_3",port="NVLink_9"} 0
+# HELP oob_gpu_nvlink_tx_bytes Bytes transmitted on the NVLink port
+# TYPE oob_gpu_nvlink_tx_bytes counter
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_0"} 5.698656e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_1"} 2.782656e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_10"} 2.785824e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_11"} 2.784672e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_12"} 2.788704e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_13"} 2.79072e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_14"} 2.786976e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_15"} 2.788128e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_16"} 2.786112e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_17"} 2.782368e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_2"} 2.790144e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_3"} 2.784384e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_4"} 2.789856e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_5"} 2.784672e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_6"} 2.7864e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_7"} 2.78064e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_8"} 2.787264e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_0",port="NVLink_9"} 2.784384e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_0"} 5.700672e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_1"} 2.78208e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_10"} 2.78496e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_11"} 2.782944e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_12"} 2.786112e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_13"} 2.78928e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_14"} 2.784672e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_15"} 2.785536e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_16"} 2.78352e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_17"} 2.78064e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_2"} 2.785824e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_3"} 2.782944e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_4"} 2.789568e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_5"} 2.784384e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_6"} 2.78208e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_7"} 2.7792e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_8"} 2.787264e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_1",port="NVLink_9"} 2.78208e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_0"} 5.695776e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_1"} 2.779488e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_10"} 2.777472e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_11"} 2.784096e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_12"} 2.782368e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_13"} 2.78784e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_14"} 2.782656e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_15"} 2.78352e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_16"} 2.780928e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_17"} 2.7792e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_2"} 2.782368e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_3"} 2.786976e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_4"} 2.786112e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_5"} 2.78496e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_6"} 2.7792e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_7"} 2.779488e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_8"} 2.78208e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_2",port="NVLink_9"} 2.782944e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_0"} 5.700096e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_1"} 2.782944e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_10"} 2.78352e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_11"} 2.78352e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_12"} 2.786112e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_13"} 2.786976e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_14"} 2.785824e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_15"} 2.788128e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_16"} 2.784672e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_17"} 2.780064e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_2"} 2.785536e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_3"} 2.783808e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_4"} 2.78784e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_5"} 2.784096e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_6"} 2.783232e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_7"} 2.782368e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_8"} 2.784672e+06
+oob_gpu_nvlink_tx_bytes{id="GPU_3",port="NVLink_9"} 2.781792e+06
+# HELP oob_gpu_operating_speed_mhz Operating speed of the GPU in Mhz
+# TYPE oob_gpu_operating_speed_mhz gauge
+oob_gpu_operating_speed_mhz{id="GPU_0"} 120
+oob_gpu_operating_speed_mhz{id="GPU_1"} 120
+oob_gpu_operating_speed_mhz{id="GPU_2"} 120
+oob_gpu_operating_speed_mhz{id="GPU_3"} 120
+# HELP oob_gpu_pcie_correctable_error_count Number of correctable PCIe errors of the GPU
+# TYPE oob_gpu_pcie_correctable_error_count counter
+oob_gpu_pcie_correctable_error_count{id="GPU_0"} 0
+oob_gpu_pcie_correctable_error_count{id="GPU_1"} 0
+oob_gpu_pcie_correctable_error_count{id="GPU_2"} 0
+oob_gpu_pcie_correctable_error_count{id="GPU_3"} 0
+# HELP oob_gpu_pcie_raw_rx_bandwidth_gbps PCIe raw receive bandwidth of the GPU in Gbps
+# TYPE oob_gpu_pcie_raw_rx_bandwidth_gbps gauge
+oob_gpu_pcie_raw_rx_bandwidth_gbps{id="GPU_0"} 0
+oob_gpu_pcie_raw_rx_bandwidth_gbps{id="GPU_1"} 0
+oob_gpu_pcie_raw_rx_bandwidth_gbps{id="GPU_2"} 3.814697265625e-06
+oob_gpu_pcie_raw_rx_bandwidth_gbps{id="GPU_3"} 0
+# HELP oob_gpu_pcie_raw_tx_bandwidth_gbps PCIe raw transmit bandwidth of the GPU in Gbps
+# TYPE oob_gpu_pcie_raw_tx_bandwidth_gbps gauge
+oob_gpu_pcie_raw_tx_bandwidth_gbps{id="GPU_0"} 0
+oob_gpu_pcie_raw_tx_bandwidth_gbps{id="GPU_1"} 0
+oob_gpu_pcie_raw_tx_bandwidth_gbps{id="GPU_2"} 0
+oob_gpu_pcie_raw_tx_bandwidth_gbps{id="GPU_3"} 0
+# HELP oob_gpu_pf_flr_reset_entry_count Number of PF FLR reset entries on the GPU
+# TYPE oob_gpu_pf_flr_reset_entry_count counter
+oob_gpu_pf_flr_reset_entry_count{id="GPU_0"} 0
+oob_gpu_pf_flr_reset_entry_count{id="GPU_1"} 0
+oob_gpu_pf_flr_reset_entry_count{id="GPU_2"} 0
+oob_gpu_pf_flr_reset_entry_count{id="GPU_3"} 0
+# HELP oob_gpu_pf_flr_reset_exit_count Number of PF FLR reset exits on the GPU
+# TYPE oob_gpu_pf_flr_reset_exit_count counter
+oob_gpu_pf_flr_reset_exit_count{id="GPU_0"} 0
+oob_gpu_pf_flr_reset_exit_count{id="GPU_1"} 0
+oob_gpu_pf_flr_reset_exit_count{id="GPU_2"} 0
+oob_gpu_pf_flr_reset_exit_count{id="GPU_3"} 0
+# HELP oob_gpu_power_limit_watt Power limit of the GPU in watts
+# TYPE oob_gpu_power_limit_watt gauge
+oob_gpu_power_limit_watt{id="GPU_0"} 176.486
+oob_gpu_power_limit_watt{id="GPU_1"} 180.526
+oob_gpu_power_limit_watt{id="GPU_2"} 176.486
+oob_gpu_power_limit_watt{id="GPU_3"} 176.255
+# HELP oob_gpu_power_smoothing_enabled Indicates if power smoothing is enabled on the GPU
+# TYPE oob_gpu_power_smoothing_enabled gauge
+oob_gpu_power_smoothing_enabled{id="GPU_0"} 0
+oob_gpu_power_smoothing_enabled{id="GPU_1"} 0
+oob_gpu_power_smoothing_enabled{id="GPU_2"} 0
+oob_gpu_power_smoothing_enabled{id="GPU_3"} 0
+# HELP oob_gpu_power_smoothing_immediate_ramp_down Indicates if immediate ramp down is enabled on the GPU
+# TYPE oob_gpu_power_smoothing_immediate_ramp_down gauge
+oob_gpu_power_smoothing_immediate_ramp_down{id="GPU_0"} 0
+oob_gpu_power_smoothing_immediate_ramp_down{id="GPU_1"} 0
+oob_gpu_power_smoothing_immediate_ramp_down{id="GPU_2"} 0
+oob_gpu_power_smoothing_immediate_ramp_down{id="GPU_3"} 0
+# HELP oob_gpu_power_smoothing_max_allowed_tmp_floor_percent Maximum allowed TMP floor percentage for power smoothing
+# TYPE oob_gpu_power_smoothing_max_allowed_tmp_floor_percent gauge
+oob_gpu_power_smoothing_max_allowed_tmp_floor_percent{id="GPU_0"} 100
+oob_gpu_power_smoothing_max_allowed_tmp_floor_percent{id="GPU_1"} 100
+oob_gpu_power_smoothing_max_allowed_tmp_floor_percent{id="GPU_2"} 100
+oob_gpu_power_smoothing_max_allowed_tmp_floor_percent{id="GPU_3"} 100
+# HELP oob_gpu_power_smoothing_min_allowed_tmp_floor_percent Minimum allowed TMP floor percentage for power smoothing
+# TYPE oob_gpu_power_smoothing_min_allowed_tmp_floor_percent gauge
+oob_gpu_power_smoothing_min_allowed_tmp_floor_percent{id="GPU_0"} 0
+oob_gpu_power_smoothing_min_allowed_tmp_floor_percent{id="GPU_1"} 0
+oob_gpu_power_smoothing_min_allowed_tmp_floor_percent{id="GPU_2"} 0
+oob_gpu_power_smoothing_min_allowed_tmp_floor_percent{id="GPU_3"} 0
+# HELP oob_gpu_power_smoothing_ramp_down_hysteresis_seconds Ramp down hysteresis in seconds for power smoothing
+# TYPE oob_gpu_power_smoothing_ramp_down_hysteresis_seconds gauge
+oob_gpu_power_smoothing_ramp_down_hysteresis_seconds{id="GPU_0"} 10
+oob_gpu_power_smoothing_ramp_down_hysteresis_seconds{id="GPU_1"} 10
+oob_gpu_power_smoothing_ramp_down_hysteresis_seconds{id="GPU_2"} 10
+oob_gpu_power_smoothing_ramp_down_hysteresis_seconds{id="GPU_3"} 10
+# HELP oob_gpu_power_smoothing_ramp_down_watts_per_second Ramp down rate in watts per second for power smoothing
+# TYPE oob_gpu_power_smoothing_ramp_down_watts_per_second gauge
+oob_gpu_power_smoothing_ramp_down_watts_per_second{id="GPU_0"} 20
+oob_gpu_power_smoothing_ramp_down_watts_per_second{id="GPU_1"} 20
+oob_gpu_power_smoothing_ramp_down_watts_per_second{id="GPU_2"} 20
+oob_gpu_power_smoothing_ramp_down_watts_per_second{id="GPU_3"} 20
+# HELP oob_gpu_power_smoothing_ramp_up_watts_per_second Ramp up rate in watts per second for power smoothing
+# TYPE oob_gpu_power_smoothing_ramp_up_watts_per_second gauge
+oob_gpu_power_smoothing_ramp_up_watts_per_second{id="GPU_0"} 20
+oob_gpu_power_smoothing_ramp_up_watts_per_second{id="GPU_1"} 20
+oob_gpu_power_smoothing_ramp_up_watts_per_second{id="GPU_2"} 20
+oob_gpu_power_smoothing_ramp_up_watts_per_second{id="GPU_3"} 20
+# HELP oob_gpu_power_smoothing_remaining_lifetime_circuitry_percent Remaining lifetime of the power smoothing circuitry in percent
+# TYPE oob_gpu_power_smoothing_remaining_lifetime_circuitry_percent gauge
+oob_gpu_power_smoothing_remaining_lifetime_circuitry_percent{id="GPU_0"} 100
+oob_gpu_power_smoothing_remaining_lifetime_circuitry_percent{id="GPU_1"} 100
+oob_gpu_power_smoothing_remaining_lifetime_circuitry_percent{id="GPU_2"} 100
+oob_gpu_power_smoothing_remaining_lifetime_circuitry_percent{id="GPU_3"} 100
+# HELP oob_gpu_power_smoothing_supported Indicates if logic power smoothing is supported on the GPU
+# TYPE oob_gpu_power_smoothing_supported gauge
+oob_gpu_power_smoothing_supported{id="GPU_0"} 1
+oob_gpu_power_smoothing_supported{id="GPU_1"} 1
+oob_gpu_power_smoothing_supported{id="GPU_2"} 1
+oob_gpu_power_smoothing_supported{id="GPU_3"} 1
+# HELP oob_gpu_power_smoothing_tmp_floor_percent Current TMP floor percentage for power smoothing
+# TYPE oob_gpu_power_smoothing_tmp_floor_percent gauge
+oob_gpu_power_smoothing_tmp_floor_percent{id="GPU_0"} 89.990234375
+oob_gpu_power_smoothing_tmp_floor_percent{id="GPU_1"} 89.990234375
+oob_gpu_power_smoothing_tmp_floor_percent{id="GPU_2"} 89.990234375
+oob_gpu_power_smoothing_tmp_floor_percent{id="GPU_3"} 89.990234375
+# HELP oob_gpu_power_smoothing_tmp_floor_watts Current TMP floor in watts for power smoothing
+# TYPE oob_gpu_power_smoothing_tmp_floor_watts gauge
+oob_gpu_power_smoothing_tmp_floor_watts{id="GPU_0"} 0
+oob_gpu_power_smoothing_tmp_floor_watts{id="GPU_1"} 0
+oob_gpu_power_smoothing_tmp_floor_watts{id="GPU_2"} 0
+oob_gpu_power_smoothing_tmp_floor_watts{id="GPU_3"} 0
+# HELP oob_gpu_power_smoothing_tmp_watts Current TMP in watts for power smoothing
+# TYPE oob_gpu_power_smoothing_tmp_watts gauge
+oob_gpu_power_smoothing_tmp_watts{id="GPU_0"} 1457
+oob_gpu_power_smoothing_tmp_watts{id="GPU_1"} 1459
+oob_gpu_power_smoothing_tmp_watts{id="GPU_2"} 1455
+oob_gpu_power_smoothing_tmp_watts{id="GPU_3"} 1455
+# HELP oob_gpu_primary_gpu_temperature_celsius Primary temperature of the GPU in celsius
+# TYPE oob_gpu_primary_gpu_temperature_celsius gauge
+oob_gpu_primary_gpu_temperature_celsius{id="GPU_0"} 53.1875
+oob_gpu_primary_gpu_temperature_celsius{id="GPU_1"} 53.15625
+oob_gpu_primary_gpu_temperature_celsius{id="GPU_2"} 52.78125
+oob_gpu_primary_gpu_temperature_celsius{id="GPU_3"} 52.75
+# HELP oob_gpu_sm_activity_percent Streaming Multiprocessor (SM) activity of the GPU in percent
+# TYPE oob_gpu_sm_activity_percent gauge
+oob_gpu_sm_activity_percent{id="GPU_0"} 0
+oob_gpu_sm_activity_percent{id="GPU_1"} 0
+oob_gpu_sm_activity_percent{id="GPU_2"} 0
+oob_gpu_sm_activity_percent{id="GPU_3"} 0
+# HELP oob_gpu_sm_occupancy_percent Streaming Multiprocessor (SM) occupancy of the GPU in percent
+# TYPE oob_gpu_sm_occupancy_percent gauge
+oob_gpu_sm_occupancy_percent{id="GPU_0"} 0
+oob_gpu_sm_occupancy_percent{id="GPU_1"} 0
+oob_gpu_sm_occupancy_percent{id="GPU_2"} 0
+oob_gpu_sm_occupancy_percent{id="GPU_3"} 0
+# HELP oob_gpu_sm_utilization_percent Streaming Multiprocessor (SM) utilization of the GPU in percent
+# TYPE oob_gpu_sm_utilization_percent gauge
+oob_gpu_sm_utilization_percent{id="GPU_0"} 0
+oob_gpu_sm_utilization_percent{id="GPU_1"} 0
+oob_gpu_sm_utilization_percent{id="GPU_2"} 0
+oob_gpu_sm_utilization_percent{id="GPU_3"} 0
+# HELP oob_gpu_state State of the GPU
+# TYPE oob_gpu_state gauge
+oob_gpu_state{id="GPU_0",state="Enabled"} 0
+oob_gpu_state{id="GPU_1",state="Enabled"} 0
+oob_gpu_state{id="GPU_2",state="Enabled"} 0
+oob_gpu_state{id="GPU_3",state="Enabled"} 0
+# HELP oob_gpu_tensor_core_activity_percent Tensor Core activity of the GPU in percent
+# TYPE oob_gpu_tensor_core_activity_percent gauge
+oob_gpu_tensor_core_activity_percent{id="GPU_0"} 0
+oob_gpu_tensor_core_activity_percent{id="GPU_1"} 0
+oob_gpu_tensor_core_activity_percent{id="GPU_2"} 0
+oob_gpu_tensor_core_activity_percent{id="GPU_3"} 0
+# HELP oob_gpu_throttle_reason Reason for GPU throttling
+# TYPE oob_gpu_throttle_reason gauge
+oob_gpu_throttle_reason{id="GPU_0",reason="NA"} 1
+oob_gpu_throttle_reason{id="GPU_1",reason="NA"} 1
+oob_gpu_throttle_reason{id="GPU_2",reason="NA"} 1
+oob_gpu_throttle_reason{id="GPU_3",reason="NA"} 1
+# HELP oob_gpu_total_nvlinks Total number of NVLinks on the GPU
+# TYPE oob_gpu_total_nvlinks gauge
+oob_gpu_total_nvlinks{id="GPU_0"} 18
+oob_gpu_total_nvlinks{id="GPU_1"} 18
+oob_gpu_total_nvlinks{id="GPU_2"} 18
+oob_gpu_total_nvlinks{id="GPU_3"} 18

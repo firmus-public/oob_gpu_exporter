@@ -141,6 +141,28 @@ func (mc *Collector) NewSupermicroGPUState(ch chan<- prometheus.Metric, m *PCIeD
 	)
 }
 
+func (mc *Collector) NewGBNVLGPUHealth(ch chan<- prometheus.Metric, id string, status string) {
+	value := gpuHealth2value(status)
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUHealth,
+		prometheus.GaugeValue,
+		float64(value),
+		id,
+		status,
+	)
+}
+
+func (mc *Collector) NewGBNVLGPUState(ch chan<- prometheus.Metric, id string, state string) {
+	value := gpuState2value(state)
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUState,
+		prometheus.GaugeValue,
+		float64(value),
+		id,
+		state,
+	)
+}
+
 func (mc *Collector) NewSmcGPUTemp(ch chan<- prometheus.Metric, id string, value float64) {
 	ch <- prometheus.MustNewConstMetric(
 		mc.GPUPrimaryGPUTemperatureCelsius,
@@ -238,11 +260,11 @@ func (mc *Collector) NewGPUThrottleReasons(ch chan<- prometheus.Metric, v []stri
 	}
 }
 
-func (mc *Collector) NewGPUSMUtilizationPercent(ch chan<- prometheus.Metric, v int, id string) {
+func (mc *Collector) NewGPUSMUtilizationPercent(ch chan<- prometheus.Metric, v float64, id string) {
 	ch <- prometheus.MustNewConstMetric(
 		mc.GPUSMUtilizationPercent,
 		prometheus.GaugeValue,
-		float64(v),
+		v,
 		id,
 	)
 }
@@ -374,4 +396,144 @@ func (mc *Collector) NewGPUConsumedPowerWatt(ch chan<- prometheus.Metric, m *GPU
 		m.ConsumedPowerWatt,
 		m.Id,
 	)
+}
+
+func (mc *Collector) NewGPUPowerLimitWatts(ch chan<- prometheus.Metric, id string, value float64) {
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUPowerLimitWatts,
+		prometheus.GaugeValue,
+		value,
+		id,
+	)
+}
+
+func (mc *Collector) NewGPUCoreVoltageVolts(ch chan<- prometheus.Metric, id string, value float64) {
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUCoreVoltageVolts,
+		prometheus.GaugeValue,
+		value,
+		id,
+	)
+}
+
+func (mc *Collector) NewGPUMemoryECCErrors(ch chan<- prometheus.Metric, id string, correctable int, uncorrectable int) {
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUMemoryCorrectableECCErrorCount,
+		prometheus.CounterValue,
+		float64(correctable),
+		id,
+	)
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUMemoryUncorrectableECCErrorCount,
+		prometheus.CounterValue,
+		float64(uncorrectable),
+		id,
+	)
+}
+
+func (mc *Collector) NewGPUPowerSmoothingMetrics(ch chan<- prometheus.Metric, id string, m *PowerSmoothing) {
+	ch <- prometheus.MustNewConstMetric(mc.GPUPowerSmoothingSupported, prometheus.GaugeValue, boolToFloat(m.PowerSmoothingSupported), id)
+	ch <- prometheus.MustNewConstMetric(mc.GPUPowerSmoothingEnabled, prometheus.GaugeValue, boolToFloat(m.Enabled), id)
+	ch <- prometheus.MustNewConstMetric(mc.GPUPowerSmoothingImmediateRampDown, prometheus.GaugeValue, boolToFloat(m.ImmediateRampDown), id)
+
+	ch <- prometheus.MustNewConstMetric(mc.GPUPowerSmoothingMaxAllowedTMPFloorPercent, prometheus.GaugeValue, m.MaxAllowedTMPFloorPercent, id)
+	ch <- prometheus.MustNewConstMetric(mc.GPUPowerSmoothingMinAllowedTMPFloorPercent, prometheus.GaugeValue, m.MinAllowedTMPFloorPercent, id)
+	ch <- prometheus.MustNewConstMetric(mc.GPUPowerSmoothingRampDownHysteresisSeconds, prometheus.GaugeValue, m.RampDownHysteresisSeconds, id)
+	ch <- prometheus.MustNewConstMetric(mc.GPUPowerSmoothingRampDownWattsPerSecond, prometheus.GaugeValue, m.RampDownWattsPerSecond, id)
+	ch <- prometheus.MustNewConstMetric(mc.GPUPowerSmoothingRampUpWattsPerSecond, prometheus.GaugeValue, m.RampUpWattsPerSecond, id)
+	ch <- prometheus.MustNewConstMetric(mc.GPUPowerSmoothingRemainingLifetimeCircuitryPercent, prometheus.GaugeValue, m.RemainingLifetimeCircuitryPercent, id)
+	ch <- prometheus.MustNewConstMetric(mc.GPUPowerSmoothingTMPFloorPercent, prometheus.GaugeValue, m.TMPFloorPercent, id)
+	ch <- prometheus.MustNewConstMetric(mc.GPUPowerSmoothingTMPFloorWatts, prometheus.GaugeValue, m.TMPFloorWatts, id)
+	ch <- prometheus.MustNewConstMetric(mc.GPUPowerSmoothingTMPWatts, prometheus.GaugeValue, m.TMPWatts, id)
+}
+
+func (mc *Collector) NewGPUNVLinkPortMetrics(ch chan<- prometheus.Metric, gpuID string, portID string, portResp *PortResponse, metricsResp *PortMetricsResponse) {
+	status := 0.0
+	if portResp.Status.State == "Enabled" && portResp.LinkStatus == "LinkUp" {
+		status = 1.0
+	}
+	ch <- prometheus.MustNewConstMetric(mc.GPUNVLinkStatus, prometheus.GaugeValue, status, gpuID, portID)
+	ch <- prometheus.MustNewConstMetric(mc.GPUNVLinkCurrentSpeedGbps, prometheus.GaugeValue, portResp.CurrentSpeedGbps, gpuID, portID)
+
+	ch <- prometheus.MustNewConstMetric(mc.GPUNVLinkRXBytes, prometheus.CounterValue, float64(metricsResp.RXBytes), gpuID, portID)
+	ch <- prometheus.MustNewConstMetric(mc.GPUNVLinkTXBytes, prometheus.CounterValue, float64(metricsResp.TXBytes), gpuID, portID)
+
+	nvidia := metricsResp.Oem.Nvidia
+	ch <- prometheus.MustNewConstMetric(mc.GPUNVLinkBitErrorRate, prometheus.GaugeValue, nvidia.BitErrorRate, gpuID, portID)
+	ch <- prometheus.MustNewConstMetric(mc.GPUNVLinkLinkDownedCount, prometheus.CounterValue, float64(nvidia.LinkDownedCount), gpuID, portID)
+	ch <- prometheus.MustNewConstMetric(mc.GPUNVLinkSymbolErrors, prometheus.CounterValue, float64(nvidia.SymbolErrors), gpuID, portID)
+	ch <- prometheus.MustNewConstMetric(mc.GPUNVLinkRecoveryCount, prometheus.CounterValue, float64(nvidia.LinkErrorRecoveryCount), gpuID, portID)
+
+	// NVLink error flags
+	if nvidia.NVLinkErrors != nil {
+		ch <- prometheus.MustNewConstMetric(mc.GPUNVLinkRuntimeError, prometheus.GaugeValue, boolToFloat(nvidia.NVLinkErrors.RuntimeError), gpuID, portID)
+		ch <- prometheus.MustNewConstMetric(mc.GPUNVLinkTrainingError, prometheus.GaugeValue, boolToFloat(nvidia.NVLinkErrors.TrainingError), gpuID, portID)
+	}
+}
+
+func boolToFloat(b bool) float64 {
+	if b {
+		return 1.0
+	}
+	return 0.0
+}
+
+func (mc *Collector) NewGPUGaugeMetric(ch chan<- prometheus.Metric, desc *prometheus.Desc, id string, value float64) {
+	ch <- prometheus.MustNewConstMetric(
+		desc,
+		prometheus.GaugeValue,
+		value,
+		id,
+	)
+}
+
+func (mc *Collector) NewGPUCounterMetric(ch chan<- prometheus.Metric, desc *prometheus.Desc, id string, value int) {
+	ch <- prometheus.MustNewConstMetric(
+		desc,
+		prometheus.CounterValue,
+		float64(value),
+		id,
+	)
+}
+
+func (mc *Collector) NewGPUTotalNVLinks(ch chan<- prometheus.Metric, id string, count int) {
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUTotalNVLinks,
+		prometheus.GaugeValue,
+		float64(count),
+		id,
+	)
+}
+
+func (mc *Collector) NewGPUEnergyJoules(ch chan<- prometheus.Metric, id string, value float64) {
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUEnergyJoules,
+		prometheus.CounterValue,
+		value,
+		id,
+	)
+}
+
+func (mc *Collector) NewGPUCacheECCErrors(ch chan<- prometheus.Metric, id string, correctable int, uncorrectable int) {
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUCacheCorrectableECCErrorCount,
+		prometheus.CounterValue,
+		float64(correctable),
+		id,
+	)
+	ch <- prometheus.MustNewConstMetric(
+		mc.GPUCacheUncorrectableECCErrorCount,
+		prometheus.CounterValue,
+		float64(uncorrectable),
+		id,
+	)
+}
+
+func (mc *Collector) NewGPUResetMetrics(ch chan<- prometheus.Metric, id string, m *ProcessorResetMetrics) {
+	ch <- prometheus.MustNewConstMetric(mc.GPUConventionalResetEntryCount, prometheus.CounterValue, float64(m.ConventionalResetEntryCount), id)
+	ch <- prometheus.MustNewConstMetric(mc.GPUConventionalResetExitCount, prometheus.CounterValue, float64(m.ConventionalResetExitCount), id)
+	ch <- prometheus.MustNewConstMetric(mc.GPUFundamentalResetEntryCount, prometheus.CounterValue, float64(m.FundamentalResetEntryCount), id)
+	ch <- prometheus.MustNewConstMetric(mc.GPUFundamentalResetExitCount, prometheus.CounterValue, float64(m.FundamentalResetExitCount), id)
+	ch <- prometheus.MustNewConstMetric(mc.GPUPFFLRResetEntryCount, prometheus.CounterValue, float64(m.PF_FLR_ResetEntryCount), id)
+	ch <- prometheus.MustNewConstMetric(mc.GPUPFFLRResetExitCount, prometheus.CounterValue, float64(m.PF_FLR_ResetExitCount), id)
 }

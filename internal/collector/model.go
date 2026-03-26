@@ -143,12 +143,22 @@ type GPU struct {
 	Manufacturer  string `json:"Manufacturer"`
 	Model         string `json:"Model"`
 	PartNumber    string `json:"PartNumber"`
+	SerialNumber  string `json:"SerialNumber"`
 	Metrics       Odata  `json:"Metrics"`
 	MemorySummary struct {
 		Metrics Odata `json:"Metrics"`
 	} `json:"MemorySummary"`
-	ProcessorType string `json:"ProcessorType"`
-	Status        Status `json:"Status"`
+	ProcessorType      string `json:"ProcessorType"`
+	Status             Status `json:"Status"`
+	EnvironmentMetrics *Odata `json:"EnvironmentMetrics"`
+	Oem                struct {
+		Nvidia struct {
+			PowerSmoothing        Odata  `json:"PowerSmoothing"`
+			ProcessorResetMetrics *Odata `json:"ProcessorResetMetrics"`
+			TotalNumberNVLinks    int    `json:"TotalNumberNVLinks"`
+		} `json:"Nvidia"`
+	} `json:"Oem"`
+	Ports *Odata `json:"Ports"`
 }
 
 type DellVideoMember struct {
@@ -177,21 +187,40 @@ type DellGPUSensors struct {
 }
 
 type GPUMetrics struct {
-	Id                 string   `json:"Id"`
-	TemperatureCelsius float64  `json:"TemperatureCelsius"`
-	ConsumedPowerWatt  float64  `json:"ConsumedPowerWatt"`
-	OperatingSpeedMHz  *float64 `json:"OperatingSpeedMHz"`
-	BandwidthPercent   *float64 `json:"BandwidthPercent"`
-	Oem                *struct {
+	Id                 string  `json:"Id"`
+	TemperatureCelsius float64 `json:"TemperatureCelsius"`
+	ConsumedPowerWatt  float64 `json:"ConsumedPowerWatt"`
+	CoreVoltage        struct {
+		Reading float64 `json:"Reading"`
+	} `json:"CoreVoltage"`
+	OperatingSpeedMHz *float64 `json:"OperatingSpeedMHz"`
+	BandwidthPercent  *float64 `json:"BandwidthPercent"`
+	CacheMetricsTotal *struct {
+		LifeTime struct {
+			CorrectableECCErrorCount   int `json:"CorrectableECCErrorCount"`
+			UncorrectableECCErrorCount int `json:"UncorrectableECCErrorCount"`
+		} `json:"LifeTime"`
+	} `json:"CacheMetricsTotal"`
+	Oem *struct {
 		Nvidia *struct {
-			ThrottleReasons           []string `json:"ThrottleReasons"`
-			SMUtilizationPercent      int      `json:"SMUtilizationPercent"`
-			SMActivityPercent         float64  `json:"SMActivityPercent"`
-			SMOccupancyPercent        float64  `json:"SMOccupancyPercent"`
-			TensorCoreActivityPercent float64  `json:"TensorCoreActivityPercent"`
-			HMMAUtilizationPercent    float64  `json:"HMMAUtilizationPercent"`
-			PCIeRawTxBandwidthGbps    float64  `json:"PCIeRawTxBandwidthGbps"`
-			PCIeRawRxBandwidthGbps    float64  `json:"PCIeRawRxBandwidthGbps"`
+			ThrottleReasons                   []string `json:"ThrottleReasons"`
+			SMUtilizationPercent              float64  `json:"SMUtilizationPercent"`
+			SMActivityPercent                 float64  `json:"SMActivityPercent"`
+			SMOccupancyPercent                float64  `json:"SMOccupancyPercent"`
+			TensorCoreActivityPercent         float64  `json:"TensorCoreActivityPercent"`
+			HMMAUtilizationPercent            float64  `json:"HMMAUtilizationPercent"`
+			PCIeRawTxBandwidthGbps            float64  `json:"PCIeRawTxBandwidthGbps"`
+			PCIeRawRxBandwidthGbps            float64  `json:"PCIeRawRxBandwidthGbps"`
+			FP16ActivityPercent               float64  `json:"FP16ActivityPercent"`
+			FP32ActivityPercent               float64  `json:"FP32ActivityPercent"`
+			FP64ActivityPercent               float64  `json:"FP64ActivityPercent"`
+			IntegerActivityUtilizationPercent float64  `json:"IntegerActivityUtilizationPercent"`
+			NVLinkDataRxBandwidthGbps         float64  `json:"NVLinkDataRxBandwidthGbps"`
+			NVLinkDataTxBandwidthGbps         float64  `json:"NVLinkDataTxBandwidthGbps"`
+			NVDecUtilizationPercent           float64  `json:"NVDecUtilizationPercent"`
+			NVJpgUtilizationPercent           float64  `json:"NVJpgUtilizationPercent"`
+			NVLinkRawRxBandwidthGbps          float64  `json:"NVLinkRawRxBandwidthGbps"`
+			NVLinkRawTxBandwidthGbps          float64  `json:"NVLinkRawTxBandwidthGbps"`
 		} `json:"Nvidia"`
 		Dell *struct {
 			CurrentPCIeLinkSpeed      int     `json:"CurrentPCIeLinkSpeed"`
@@ -203,11 +232,95 @@ type GPUMetrics struct {
 		CorrectableErrorCount int `json:"CorrectableErrorCount"`
 	} `json:"PCIeErrors"`
 }
- 
+
+type ProcessorResetMetrics struct {
+	ConventionalResetEntryCount int    `json:"ConventionalResetEntryCount"`
+	ConventionalResetExitCount  int    `json:"ConventionalResetExitCount"`
+	FundamentalResetEntryCount  int    `json:"FundamentalResetEntryCount"`
+	FundamentalResetExitCount   int    `json:"FundamentalResetExitCount"`
+	PF_FLR_ResetEntryCount      int    `json:"PF_FLR_ResetEntryCount"`
+	PF_FLR_ResetExitCount       int    `json:"PF_FLR_ResetExitCount"`
+	LastResetType               string `json:"LastResetType"`
+}
 
 type GPUMemoryMetrics struct {
 	BandwidthPercent  float64 `json:"BandwidthPercent"`
 	OperatingSpeedMHz float64 `json:"OperatingSpeedMHz"`
+	LifeTime          struct {
+		CorrectableECCErrorCount   int `json:"CorrectableECCErrorCount"`
+		UncorrectableECCErrorCount int `json:"UncorrectableECCErrorCount"`
+	} `json:"LifeTime"`
+}
+
+type EnvironmentMetricsResponse struct {
+	PowerWatts struct {
+		Reading float64 `json:"Reading"`
+	} `json:"PowerWatts"`
+	PowerLimitWatts struct {
+		Reading float64 `json:"Reading"`
+	} `json:"PowerLimitWatts"`
+	TemperatureCelsius struct {
+		Reading float64 `json:"Reading"`
+	} `json:"TemperatureCelsius"`
+	EnergyJoules struct {
+		Reading float64 `json:"Reading"`
+	} `json:"EnergyJoules"`
+}
+
+type PowerSmoothing struct {
+	PowerSmoothingSupported           bool    `json:"PowerSmoothingSupported"`
+	Enabled                           bool    `json:"Enabled"`
+	ImmediateRampDown                 bool    `json:"ImmediateRampDown"`
+	MaxAllowedTMPFloorPercent         float64 `json:"MaxAllowedTMPFloorPercent"`
+	MinAllowedTMPFloorPercent         float64 `json:"MinAllowedTMPFloorPercent"`
+	RampDownHysteresisSeconds         float64 `json:"RampDownHysteresisSeconds"`
+	RampDownWattsPerSecond            float64 `json:"RampDownWattsPerSecond"`
+	RampUpWattsPerSecond              float64 `json:"RampUpWattsPerSecond"`
+	RemainingLifetimeCircuitryPercent float64 `json:"RemainingLifetimeCircuitryPercent"`
+	TMPFloorPercent                   float64 `json:"TMPFloorPercent"`
+	TMPFloorWatts                     float64 `json:"TMPFloorWatts"`
+	TMPWatts                          float64 `json:"TMPWatts"`
+}
+
+type PortCollection struct {
+	Members []Odata `json:"Members"`
+}
+
+type PortResponse struct {
+	Id               string  `json:"Id"`
+	Status           Status  `json:"Status"`
+	CurrentSpeedGbps float64 `json:"CurrentSpeedGbps"`
+	MaxSpeedGbps     float64 `json:"MaxSpeedGbps"`
+	Metrics          *Odata  `json:"Metrics"`
+	LinkStatus       string  `json:"LinkStatus"`
+}
+
+type PortMetricsResponse struct {
+	Id         string `json:"Id"`
+	Networking struct {
+		RXFrames   int `json:"RXFrames"`
+		TXFrames   int `json:"TXFrames"`
+		TXDiscards int `json:"TXDiscards"`
+	} `json:"Networking"`
+	RXBytes  int `json:"RXBytes"`
+	TXBytes  int `json:"TXBytes"`
+	RXErrors int `json:"RXErrors"`
+	Oem      struct {
+		Nvidia struct {
+			BitErrorRate              float64 `json:"BitErrorRate"`
+			LinkDownedCount           int     `json:"LinkDownedCount"`
+			LinkErrorRecoveryCount    int     `json:"LinkErrorRecoveryCount"`
+			NVLinkDataRxBandwidthGbps float64 `json:"NVLinkDataRxBandwidthGbps"`
+			NVLinkDataTxBandwidthGbps float64 `json:"NVLinkDataTxBandwidthGbps"`
+			NVLinkRawRxBandwidthGbps  float64 `json:"NVLinkRawRxBandwidthGbps"`
+			NVLinkRawTxBandwidthGbps  float64 `json:"NVLinkRawTxBandwidthGbps"`
+			SymbolErrors              int     `json:"SymbolErrors"`
+			NVLinkErrors              *struct {
+				RuntimeError  bool `json:"RuntimeError"`
+				TrainingError bool `json:"TrainingError"`
+			} `json:"NVLinkErrors"`
+		} `json:"Nvidia"`
+	} `json:"Oem"`
 }
 
 type ChassisResponse struct {
@@ -327,14 +440,14 @@ type PCIeDeviceResponse struct {
 	FirmwareVersion string `json:"FirmwareVersion"`
 	DeviceType      string `json:"DeviceType"`
 	Status          Status `json:"Status"`
-	PCIeInterface struct {
+	PCIeInterface   struct {
 		PCIeType    string `json:"PCIeType"`
 		MaxPCIeType string `json:"MaxPCIeType"`
 		LanesInUse  int    `json:"LanesInUse"`
 		MaxLanes    int    `json:"MaxLanes"`
 	} `json:"PCIeInterface"`
 	PCIeFunctions Odata `json:"PCIeFunctions"`
-	Oem *struct {
+	Oem           *struct {
 		Supermicro *struct {
 			OdataType        string `json:"@odata.type"`
 			GPUSlot          int    `json:"GPUSlot"`
@@ -342,8 +455,8 @@ type PCIeDeviceResponse struct {
 			Driver           string `json:"Driver"`
 			MemoryVendor     string `json:"MemoryVendor"`
 			MemoryPartNumber string `json:"MemoryPartNumber"`
-			GPUGUID1          string `json:"GPUGuid"`
-			GPUGUID2		  string `json:"GPU GUID"`
+			GPUGUID1         string `json:"GPUGuid"`
+			GPUGUID2         string `json:"GPU GUID"`
 			InfoROMVersion   string `json:"InfoROMVersion"`
 			GPUVendor        string `json:"GPUVendor"`
 		} `json:"Supermicro"`
@@ -425,9 +538,9 @@ type Temperature struct {
 	UpperThresholdNonCritical float64 `json:"UpperThresholdNonCritical"`
 	Status                    Status  `json:"Status"`
 	RelatedItem               []Odata `json:"RelatedItem"`
-	Oem *struct {
+	Oem                       *struct {
 		Supermicro *struct {
-			OdataType string `json:"@odata.type"`
+			OdataType string            `json:"@odata.type"`
 			Details   map[string]string `json:"Details"`
 		} `json:"Supermicro"`
 	} `json:"Oem"`
